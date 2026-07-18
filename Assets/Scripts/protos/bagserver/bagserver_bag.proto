@@ -1,0 +1,28 @@
+import "common/common.proto";
+
+package bagserver_bag;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	bagserver_bag = 301;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_ReqLatestBag = 1;
+	CMD_ResLatestBag = 2;
+	CMD_PlayerBagNotice  = 80;
+}
+
+message PlayerBagNotice{
+    repeated common.Bag bag_list = 1;
+}
+
+//获取最新背包物品信息
+message ReqLatestBag{
+	optional int64 player_id = 1;           //玩家ID
+}
+
+//回应最新背包物品信息
+message ResLatestBag{
+    repeated common.Bag bag_list = 1;     
+}

@@ -1,0 +1,24 @@
+package mapserver_match;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	mapserver_match = 204;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_ToEnterFightRoomReq = 1;
+	CMD_ToEnterFightRoomRes = 2;
+}
+
+//申请区域副本进入
+message ToEnterFightRoomReq{
+	optional int64 player_id = 1;           //玩家ID
+	optional int64 region_id = 2;
+}
+
+//区域副本进入通知
+message ToEnterFightRoomRes{
+    optional int64 map_id = 1;
+	optional int64 room_id = 2;
+	optional int32 room_type =3;   
+}

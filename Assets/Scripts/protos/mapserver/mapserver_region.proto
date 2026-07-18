@@ -1,0 +1,52 @@
+package mapserver_region;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	mapserver_region = 202;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_SelectRegionReq = 1;
+	CMD_SelectRegionRes = 2;
+	CMD_ChangeBuildReq = 3;
+	CMD_ChangeBuildRes = 4;
+	CMD_PlayerRegionNotice  = 80;
+}
+
+message OneRegion{
+	optional int64 player_id = 1;
+	optional int64 region_id = 2;
+	optional int32 is_open = 3;
+	optional int32 is_jump = 4;
+	optional int32 clear_star = 5;
+	optional int32 is_building = 6;
+	optional int64 build_id = 7; 
+}
+
+message PlayerRegionNotice{
+	repeated OneRegion region_list = 1;
+}
+
+//发送区域选择信息
+message SelectRegionReq{
+	optional int64 player_id = 1;           //玩家ID
+	optional int64 region_id = 2;
+}
+
+//区域信息选择通知
+message SelectRegionRes{
+	optional OneRegion region = 1;    
+}
+
+//修改地图区域状态
+message ChangeBuildReq{
+	optional int64 player_id = 1;           //玩家ID
+	optional int64 region_id = 2;
+	optional int32 is_building = 3;
+	optional int64 build_id = 4;
+}
+
+//区域状态修改通知
+message ChangeBuildRes{
+	optional OneRegion region = 1;    
+}

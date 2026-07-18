@@ -1,0 +1,930 @@
+﻿
+场景进入顺序: Load--->home───>map--->fight--->JieSuan
+                    │        ^                  │
+                    │        └----------------──┘
+                    │
+                    └─────> LianjiMingDan--->otherMap--->fight--->JieSuan
+                                 │             ^                    │    
+                                 │             └--------------------┘
+                                 │              ┌─---------------------─┐
+                                 │              ∨                       │
+                                 └─-------─>selectmodule--->battle--->JieSuan
+                                                 
+
+
+
+场景对应的服务节点和端口：
+Load: [center]  BASE_AUTH = http://127.0.0.1:11014
+home: [hall] WS_BIZ_hall = ws://127.0.0.1:11012
+map: [map] WS_BIZ_map = ws://127.0.0.1:11021
+fight: [fight] WS_BIZ_fight = ws://127.0.0.1:11080
+JieSuan: [fight] WS_BIZ_fight = ws://127.0.0.1:11080
+LianjiMingDan: [hall] WS_BIZ_hall = ws://127.0.0.1:11012
+otherMap: [map] WS_BIZ_map = ws://127.0.0.1:11021
+battle: [battle] WS_BIZ_battle = ws://127.0.0.1:11090
+selectmodule: [hall] WS_BIZ_hall = ws://127.0.0.1:11012
+
+
+场景各对应的对象树：
+Load.scene
+
+├── Load/
+│   ├── Main Camera
+│   ├── Canvas/
+│   │   ├── RawImage
+│   │   ├── Video Player
+│   │   ├── Button (Legacy)
+│   │   ├── Btn_Register (Button)
+│   │   ├── Btn_Login (Button)
+│   │   ├── Input_Pwd (InputField)
+│   │   ├── Input_Account (InputField)
+│   │   ├── Text (Legacy)
+│   │   ├── Text (Legacy)
+│   │   └── error-Text (Legacy)
+│   ├── NetManager
+│   ├── UIManager
+│   └── EventSystem
+
+
+
+home.scene
+
+├── home
+│   ├── Main Camera
+│   ├── Canvas
+│   │   ├── RawImage
+│   │   ├── Video Player
+│   │   ├── TerritoryExpansion(button)
+│   │   ├── ResourcePlunder(button)
+│   │   ├── exit(button)
+│   │   ├── detail-name
+│   │   │   ├── Text (Legacy)
+│   │   │   ├── InputField (Legacy)
+│   │   │   └── reflash
+│   │   ├── User-info
+│   │   │   ├── head
+│   │   │   ├── ziyuan
+│   │   │   ├── ID
+│   │   │   ├── level
+│   │   │   ├── score
+│   │   │   └── Name
+│   │   ├── email-path
+│   │   │   ├── Scroll View
+│   │   │   │   ├── Viewport
+│   │   │   │   │   └── Content
+│   │   │   │   │       ├── email-context-1
+│   │   │   │   │       └── email-context-2
+│   │   │   │   ├── Scrollbar Horizontal
+│   │   │   │   └── Scrollbar Vertical
+│   │   │   └── detail-email
+│   │   ├── Mana
+│   │   │    ├──Image
+│   │   │    └──count
+│   │   ├── TiLi
+│   │   │    ├──Image
+│   │   │    └──count
+│   │   └── Reflash
+│   ├── EventSystem
+│   └── UITOPLEFT
+
+map.scene
+
+├── map
+│   ├── Main Camera
+│   ├── Canvas/
+│   │   ├── Map1/
+│   │   │   ├── SequenceLine
+│   │   │   ├── region-8
+│   │   │   ├── region-7
+│   │   │   ├── region-6
+│   │   │   ├── region-5
+│   │   │   ├── region-4
+│   │   │   ├── region-3
+│   │   │   ├── region-2
+│   │   │   ├── region-1
+│   │   │   ├── RegionToBuild
+│   │   │   └── logo
+│   │   ├── Map2
+│   │   ├── Map3
+│   │   ├── Map4
+│   │   ├── exit (Legacy)
+│   │   ├── Mana
+│   │   ├── CardCount
+│   │   ├── bagOpen
+│   │   ├── switchsenceRight
+│   │   ├── switchsenceLeft
+│   │   ├── Dropdown_build
+│   │   ├── EnterFightRoomPath/
+│   │   │   ├── LocalTextPanel
+│   │   │   ├── RequestTextPanel
+│   │   │   ├── EnemyTextPanel
+│   │   │   ├── RewardTextPanel
+│   │   │   ├── SelectCard
+│   │   │   ├── EnterRoom
+│   │   │   ├── FightSenceImage
+│   │   │   └── PathClose
+│   │   ├── moban
+│   │   ├── BuildingInfoPath
+│   │   ├── BagItemPath
+│   │   └── cardPath
+│   ├── EventSystem
+│   ├── putBuildManager
+│   ├── CardSystem
+│   ├── MapSwitchSystem
+│   ├── MapUIPickManager
+│   ├── InitAndLockAllResouce
+│   ├── BagItemForMapInteract
+│   └── CollectResourceToInitScene
+
+fight.scene
+
+├── fight
+│   ├── Main Camera
+│   ├── Canvas/
+│   │   ├── moban
+│   │   ├── backgroudPath
+│   │   ├── FightTopUIPath/
+│   │   │   ├── setting
+│   │   │   ├── ALLCard
+│   │   │   ├── ManaUI
+│   │   │   ├── stamine
+│   │   │   ├── HP
+│   │   │   ├── LocalPositionText
+│   │   │   └── RoundStatus
+│   │   ├── FightMiddleUIPath/
+│   │   │   ├── OtherCardPath
+│   │   │   ├── CharRoundSelf
+│   │   │   ├── CharRoundOther
+│   │   │   ├── PostionAnimalPath
+│   │   │   └── EffectAnim
+│   │   ├── FightDownUIPath/
+│   │   │   ├── RoundImage
+│   │   │   ├── SelfRoundCard/
+│   │   │   │   └── CardPath
+│   │   │   ├── RoundEND
+│   │   │   └── OtherAllCard
+│   │   ├── SettingPath/
+│   │   │   └── DoPath/
+│   │   │       ├── ReasonInputField (Legacy)
+│   │   │       ├── EndTheRoom
+│   │   │       ├── ReturnToGame
+│   │   │       └── PathClose
+│   │   └── GameOverPath
+│   ├── EventSystem
+│   ├── MainCharAndCardSys
+│   ├── CharAnimSystem
+│   ├── RoomRoundStatusSys
+│   ├── RoomUIPickSystem
+│   ├── InitFightRoomSystem
+│   └── GameOverReturnInit
+
+JieSuan.scene
+
+├── JieSuan
+│   ├── Main Camera/
+│   │   └── Canvas/
+│   │       ├── Background
+│   │       ├── SelfResultPath
+│   │       ├── OtherResultPath
+│   │       ├── Confirm
+│   │       └── JieSuan
+│   ├── EventSystem
+│   └── JieSuanSystem
+
+LianjiMingDan.scene
+
+├── LianjiMingDan
+│   ├── Main Camera
+│   ├── Canvas/
+│   │   ├── RawImage
+│   │   ├── Video Player
+│   │   ├── return/
+│   │   │   └── Text (Legacy)
+│   │   ├── ScrollButtonPath/
+│   │   │   ├── OtherButton
+│   │   │   ├── FirendButton
+│   │   │   └── messageButton
+│   │   ├── OtherScrollView/
+│   │   │   ├── Viewport/
+│   │   │   │   └── Content/
+│   │   │   │       ├── PalyerDoinfo
+│   │   │   │       ├── PalyerDoinfo1
+│   │   │   │       └── PalyerDoinfo2
+│   │   │   └── Scrollbar Vertical
+│   │   ├── FirendScrollView/
+│   │   │   ├── Viewport/
+│   │   │   │   └── Content
+│   │   │   └── Scrollbar Vertical
+│   │   └── MessageScrollView/
+│   │       ├── Viewport/
+│   │       │   └── Content
+│   │       └── Scrollbar Vertical
+│   ├── EventSystem
+│   └── LianJiRoomUIPick
+
+othermap.scene
+
+├── othermap
+│   ├── Main Camera
+│   ├── Canvas/
+│   │   ├── Map1/
+│   │   │   ├── SequenceLine
+│   │   │   ├── region-8
+│   │   │   ├── region-7
+│   │   │   ├── region-6
+│   │   │   ├── region-5
+│   │   │   ├── region-4
+│   │   │   ├── region-3
+│   │   │   ├── region-2
+│   │   │   ├── region-1
+│   │   │   ├── RegionToBuild
+│   │   │   └── logo
+│   │   ├── Map2
+│   │   ├── Map3
+│   │   ├── Map4
+│   │   ├── exit (Legacy)
+│   │   ├── Mana
+│   │   ├── CardCount
+│   │   ├── bagOpen
+│   │   ├── switchsenceRight
+│   │   ├── switchsenceLeft
+│   │   ├── Dropdown_build
+│   │   ├── EnterFightRoomPath/
+│   │   │   ├── LocalTextPanel
+│   │   │   ├── RequestTextPanel
+│   │   │   ├── EnemyTextPanel
+│   │   │   ├── RewardTextPanel
+│   │   │   ├── SelectCard
+│   │   │   ├── EnterRoom
+│   │   │   ├── FightSenceImage
+│   │   │   └── PathClose
+│   │   ├── moban
+│   │   ├── BuildingInfoPath
+│   │   ├── BagItemPath
+│   │   └── cardPath
+│   ├── EventSystem
+│   ├── putBuildManager
+│   ├── CardSystem
+│   ├── MapSwitchSystem
+│   ├── MapUIPickManager
+│   ├── InitAndLockAllResouce
+│   ├── BagItemForMapInteract
+│   └── CollectResourceToInitScene
+
+battle.scene
+
+├── battle
+│   ├── Main Camera
+│   ├── Canvas/
+│   │   ├── moban
+│   │   ├── backgroudPath
+│   │   ├── FightTopUIPath/
+│   │   │   ├── setting
+│   │   │   ├── ALLCard
+│   │   │   ├── ManaUI
+│   │   │   ├── stamine
+│   │   │   ├── HP
+│   │   │   ├── LocalPositionText
+│   │   │   └── RoundStatus
+│   │   ├── FightMiddleUIPath/
+│   │   │   ├── OtherCardPath
+│   │   │   ├── CharRoundSelf
+│   │   │   ├── CharRoundOther
+│   │   │   ├── PostionAnimalPath
+│   │   │   └── EffectAnim
+│   │   ├── FightDownUIPath/
+│   │   │   ├── RoundImage
+│   │   │   ├── SelfRoundCard
+│   │   │   ├── CardPath
+│   │   │   ├── RoundEND
+│   │   │   └── OtherAllCard
+│   │   ├── SettingPath/
+│   │   │   └── DoPath/
+│   │   │       ├── ReasonInputField (Legacy)
+│   │   │       ├── EndTheRoom
+│   │   │       ├── ReturnToGame
+│   │   │       └── PathClose
+│   ├── EventSystem
+│   ├── MainCharAndCardSys
+│   ├── CharAnimSystem
+│   ├── RoomRoundStatusSys
+│   ├── RoomUIPickSystem
+│   └── InitBattleRoomSystem
+
+selectmodule.scene
+
+├── selectmodule
+│   ├── Main Camera/
+│   │   └── Canvas/
+│   │       ├── backgroudPath
+│   │       ├── PlayerHeadPath/
+│   │       │   ├── User-info/
+│   │       │   │   ├── head
+│   │       │   │   ├── ziyuan
+│   │       │   │   ├── ID
+│   │       │   │   ├── level
+│   │       │   │   ├── score
+│   │       │   │   └── Name
+│   │       │   └── User-info1/
+│   │       │       ├── head
+│   │       │       ├── ziyuan
+│   │       │       ├── ID
+│   │       │       ├── level
+│   │       │       ├── score
+│   │       │       └── Name
+│   │       ├── WaitMatchPath/
+│   │       │   └── WaitPlayerEnter/
+│   │       │       ├── context
+│   │       │       ├── RollAnim
+│   │       │       ├── Candle
+│   │       │       └── NextStep
+│   │       ├── WaitModuleEnter
+│   │       ├── WaitRoomEnter
+│   │       ├── SelectModulePath/
+│   │       │   ├── SuperBattle
+│   │       │   ├── UltimateBattle
+│   │       │   └── NomalBattle
+│   │       └── cardPath/
+│   │           ├── SelectCardPath
+│   │           ├── UserCardPath
+│   │           ├── SelectCardOver
+│   │           └── SelectCardCancel
+│   ├── EventSystem
+│   ├── CollectResourceToInitBattle
+│   ├── ChangeRoomStatus
+│   └── CardSystemManager
+
+
+文件结构：
+
+├── Assets
+│   ├── References
+│   ├── Resources
+│   ├── Scenes/
+│   │   ├── aasert-vido/
+│   │   ├── assert-animation/
+│   │   ├── assert-audio/
+│   │   ├── assert-config/
+│   │   ├── assert-img/
+│   │   ├── assert-scene/
+│   │   ├── assert-script/
+│   │   ├── test-code/
+│   │   ├── battle.unity
+│   │   ├── empty-test-sence.unity
+│   │   ├── fight.unity
+│   │   ├── home.unity
+│   │   ├── JieSuan.unity
+│   │   ├── LianjiMingDan.unity
+│   │   ├── Load.unity
+│   │   ├── map.unity
+│   │   ├── otherMap.unity
+│   │   └── selectmodule.unity
+│   └── Scripts/
+│       ├── Core
+│       ├── Gameplay
+│       ├── Network
+│       └── protos/
+│           ├── bagserver
+│           ├── battleserver
+│           ├── cardserver
+│           ├── common
+│           ├── fightserver
+│           ├── hallserver
+│           ├── mapserver
+│           └── robotserver
+
+
+穿插整个游戏场景的网络部分:
+
+├── assert-script (代码已填写)
+│   ├── NetLoad.cs
+│   └── SenceLoading.cs
+
+├── test-code (代码未填写)
+│   └── Net/
+│       ├── GameConfig.cs
+│       ├── GameDataCenter.cs
+│       ├── GameLogger.cs
+│       ├── HallMsgHandler.cs
+│       ├── LoginMsgHandler.cs
+│       ├── MessageDispatcher.cs
+│       ├── NetProtocol.cs
+│       └── WebSocketManager.cs
+
+
+未明确实现原理只表述表层效果的操作流程：
+
+操作一:初始默认进入Load场景，在Input_Pwd (InputField) 和 Input_Account (InputField)对象中填入了正确的账号名
+和密码，点击Btn_Login (Button)成功的切换到了home场景
+
+操作二：在场景home中，获取到属于账号的Name游戏名还有ID, level等级, score分数还有Mana魔力 和TiLi体力.
+
+操作三：当然当前跟服务器的交互内容只有这些, 剩下的只有切换场景改变连接端口，和保证当前场景与服务器长连接的场景内确认效果，
+虽然每次切换场景和对应端口，的本质都是切断连接然后在重新连接, 所以也应该在home以后的场景里右下角有30号大小的小字提示当前
+场景的连接情况。
+
+
+python终端实现代码模板转unity游戏场景C#实现详细要求：
+
+0.怀疑预设的脚本文件在数量和任务安排是否符合unity的游戏场景
+
+1.对于References中所使用的配置库是否缺少的提醒
+
+2.讲述具体会有多少个网络部分的脚本会挂载在场景的对象组件上哪些会被保留成单例不被销毁
+
+3.python模板终端操作转到unity场景游戏中操作的差异点
+
+4.对当前功能的约束和未来功能的期待
+
+
+
+回答:
+
+### 0. 预设脚本的数量与任务安排合理性评估
+现有预设脚本的**核心分层逻辑是合理的**，和Python模板的模块职责一一对应，符合Unity模块化设计的常规思路；但**业务覆盖度严重不足**，没有匹配Unity项目多场景、多服务器端口的架构，具体分析如下：
+
+#### 匹配合理的部分
+现有 `test-code/Net` 下的8个脚本，完整对应了Python模板的核心分层：
+- `GameConfig.cs` → 对应 `config_helper.py`（配置读取）
+- `GameLogger.cs` → 对应 `logger.py`（日志管理）
+- `GameDataCenter.cs` → 对应 `base_client.py` 的全局变量部分（玩家数据、状态存储）
+- `NetProtocol.cs` → 对应 `base_client.py` 的封包解包部分（二进制协议编解码）
+- `WebSocketManager.cs` → 对应 `client_socket.py`（WS连接、收发、心跳）
+- `MessageDispatcher.cs` → 对应 `message_handler.py`（消息ID路由分发）
+- `LoginMsgHandler.cs` → 对应 `login_handler.py`（登录/心跳协议处理）
+- `HallMsgHandler.cs` → 对应 `hall_handler.py`（大厅业务消息处理）
+
+加上场景级的 `NetLoad.cs`、`SenceLoading.cs`，基础网络架构的职责划分是通顺的。
+
+#### 存在的缺陷与不符点
+1. **业务处理器数量缺失**
+项目包含 hall、map、fight、battle 共4类业务服务器、9个场景，但仅预设了 `HallMsgHandler` 一个业务处理器，缺少地图、战斗、匹配等场景对应的消息处理脚本，无法支撑多场景切换的协议处理。
+
+2. **HTTP登录注册职责不明确**
+Python中HTTP注册、登录逻辑放在公共基础模块，现有Unity脚本中 `LoginMsgHandler` 仅处理WS层登录包，HTTP层面的账号验证、注册接口调用没有明确划入Net层职责，仅靠 `NetLoad.cs` 承载会导致场景脚本过重。
+
+3. **场景切换的连接生命周期管理缺失**
+切换场景需要执行“断开旧连接→加载新场景→连接新服务器→发送登录包”的完整流程，现有脚本没有专门的流程调度模块，仅靠 `SenceLoading.cs` 无法承载网络连接的生命周期管控。
+
+4. **多端口配置管理未体现**
+现有 `GameConfig` 若按Python模板设计，仅支持单WS地址，无法管理4个不同业务的WS端口，配置结构需要扩展。
+
+---
+
+### 1. References 缺失的依赖库提醒
+要完整复现Python模板的网络能力，References 中至少缺少以下5类关键库，缺失会导致核心功能无法运行：
+
+1. **WebSocket 客户端库**
+Unity 原生没有开箱即用的跨平台WebSocket实现，必须引入第三方库，例如 NativeWebSocket、WebSocketSharp 或 Unity 官方 WebSockets 包，否则无法建立长连接、收发二进制数据。
+
+2. **Protobuf 序列化库**
+项目基于proto协议定义消息，C#端需要 `Google.Protobuf.dll`（官方库）或 protobuf-net 才能对proto生成的C#类做序列化/反序列化，缺失则无法完成协议体的编解码，封包解包逻辑无法落地。
+
+3. **JSON 序列化库**
+HTTP 登录注册接口使用JSON格式交互。Unity 自带的 `JsonUtility` 功能受限（不支持字典、复杂嵌套结构），建议引入 Newtonsoft.Json（Json.NET），否则服务端返回的复杂JSON结构可能无法正常解析。
+
+4. **INI 配置解析库（若保留ini格式）**
+Python 端使用ini格式配置，但Unity原生不支持ini文件解析。如果沿用 `config.ini` 的设计，必须引入第三方INI解析库（如 INI Parser）；更符合Unity习惯的方案是改用 ScriptableObject 或 Json 配置，可减少第三方依赖。
+
+5. **异步主线程调度能力（推荐补充）**
+Unity 有严格的主线程限制，WS异步回调无法直接操作UI。推荐引入 UniTask 库简化异步逻辑，或自行实现主线程调度器，否则需要手动处理线程跳转，极易出现UI刷新报错。
+
+---
+
+### 2. 网络脚本的挂载方式与单例划分
+按照“全局底座跨场景保留、业务逻辑随场景销毁”的原则，具体挂载与单例设计如下：
+
+#### 一、全局单例（DontDestroyOnLoad，跨场景不销毁）
+共5个核心脚本，在Load场景初始化一次，全程保留，是整个游戏的网络底座：
+1. **WebSocketManager.cs**
+   - 职责：统一管理所有WS连接的建立、断开、数据收发、心跳保活、连接状态维护。
+   - 单例原因：连接管理能力全局通用，切换场景仅更换目标端口，无需重复创建连接对象；同时统一处理线程调度，避免多线程混乱。
+2. **MessageDispatcher.cs**
+   - 职责：全局消息路由中枢，根据包ID分发消息到对应处理器；支持动态注册/注销回调，适配场景切换。
+   - 单例原因：所有场景的消息都需要经过它路由，必须全局唯一。
+3. **GameDataCenter.cs**
+   - 职责：存储全局玩家数据（token、player_id、名称、等级、积分、道具等），作为跨场景的唯一数据源。
+   - 单例原因：玩家账号数据是全局共享的，切换场景不能丢失。
+4. **GameConfig.cs**
+   - 职责：读取并存储所有服务器地址（HTTP认证地址、4个WS业务端口地址）。
+   - 单例原因：配置全局只读，加载一次即可，无需重复IO。
+5. **GameLogger.cs**
+   - 职责：统一日志输出与本地写入，支持分账号日志。
+   - 单例原因：日志是全局工具，跨场景都需要记录。
+
+补充：`NetProtocol.cs` 为纯静态工具类，仅提供封包、解包的静态方法，不需要挂载到对象上，全局直接调用即可。
+
+#### 二、场景级挂载脚本（随场景加载/销毁）
+挂载在对应场景的管理器对象（如NetManager、UIManager）上，进入场景时注册消息监听，离开时注销，避免内存泄漏：
+1. **NetLoad.cs**
+   - 挂载位置：Load场景的 `NetManager` 对象
+   - 职责：绑定登录/注册按钮、输入框事件，调用HTTP注册/登录接口，登录成功后触发场景跳转并启动大厅WS连接。
+2. **HallMsgHandler.cs**
+   - 挂载位置：home场景的网络管理对象
+   - 职责：注册大厅相关消息的处理回调，收到玩家信息、道具列表后更新数据中心并刷新大厅UI。
+3. **SenceLoading.cs**
+   - 挂载位置：场景加载过渡对象
+   - 职责：处理场景切换时的加载动画、连接状态提示，控制“断连→切场景→重连”的流程时序。
+
+补充：后续扩展map、fight、battle场景时，每个场景都需要对应增加一个业务Handler脚本，挂载在对应场景内，处理该服务器的专属协议。场景右下角的连接状态小字，可直接读取 `WebSocketManager` 的全局状态刷新，无需每个场景重复实现网络逻辑。
+
+---
+
+### 3. Python终端模板与Unity场景实现的差异点
+核心差异体现在交互形态、流程结构、连接模式、线程模型、数据更新五个维度：
+
+1. **交互形式：命令行输入 → UI图形交互**
+   - Python：全程基于终端文本，通过键盘输入数字选择菜单，输出也是纯文本打印。
+   - Unity：所有操作通过点击UI按钮、输入框输入完成；数据直接绑定到对应UI控件（玩家名、等级、道具列表等），无命令行输出载体。
+
+2. **流程结构：单线性菜单 → 场景驱动的分段流程**
+   - Python：全程在一个进程内通过菜单切换状态，登录后始终保持单条WS连接，没有场景概念。
+   - Unity：流程和场景强绑定，HTTP登录在Load场景完成，WS连接和大厅逻辑在home场景，切换地图/战斗场景会拆分网络生命周期，流程是分段式的。
+
+3. **连接模式：单连接常驻 → 单连接随场景重建**
+   - Python：登录后仅连接hall服务器，全程不断开，直到用户主动退出。
+   - Unity：每个场景对应独立服务器端口，场景切换必然伴随“断开旧WS → 加载新场景 → 连接新WS → 发送登录包”的完整重连流程，同一时间仅维持一条业务连接。
+
+4. **线程模型：无UI线程约束 → 严格主线程限制**
+   - Python：WS跑在后台线程，可直接读写全局变量、打印终端，无线程访问限制。
+   - Unity：所有UI修改、Unity API调用必须在主线程执行；WS接收回调在异步线程，必须调度回主线程才能更新数据和UI，否则会直接报错。
+
+5. **数据更新：主动查询 → 被动推送刷新**
+   - Python：数据保存在本地文件，用户主动输入“查看数据”时才读取文件并打印。
+   - Unity：服务器推送消息后，处理器会自动更新数据中心并立刻刷新UI，用户无需主动查询，数据是实时同步的。
+
+6. **文件读写：自由路径 → 引擎资源约束**
+   - Python：可直接按相对路径读写配置、日志、存档文件，无限制。
+   - Unity：配置、资源受打包机制约束，运行时读写路径需要区分 `StreamingAssets`、`persistentDataPath`，不能随意使用相对路径。
+
+---
+
+### 4. 当前功能的约束与未来功能的期待
+#### 一、当前功能的约束
+1. **业务范围约束**
+仅实现了账号注册登录、大厅基础信息同步的最小闭环，地图、战斗、匹配、背包、邮件等核心玩法的网络交互完全未覆盖，只能验证基础连通性，不具备完整游戏功能。
+
+2. **连接能力约束**
+仅支持单连接模式，同一时间只能连接一个服务器；没有断线重连、异常恢复机制，网络波动或场景切换失败后无法自动恢复，必须手动重新登录。
+
+3. **场景覆盖约束**
+网络逻辑仅覆盖Load和home两个场景，map、fight、battle、结算、联机名单等场景的网络适配、消息处理器全部缺失，无法支撑完整场景流转。
+
+4. **数据持久化约束**
+存档、日志沿用Python纯文本文件的思路，未对接Unity原生的 `PlayerPrefs`、ScriptableObject 等数据体系，跨平台兼容性差，不符合Unity开发规范。
+
+5. **交互体验约束**
+没有网络加载态、错误弹窗、连接状态反馈等基础交互反馈，操作后没有明确的成功/失败提示，用户体验不完整。
+
+#### 二、未来功能的期待
+1. **业务全量覆盖**
+补齐地图、战斗、匹配、背包、好友、邮件等所有场景的消息处理器，实现完整的玩法协议交互，覆盖全部场景流转流程。
+
+2. **连接能力升级**
+实现断线自动重连、重连后状态自动同步；可选支持多连接并存（例如保持大厅连接的同时建立战斗连接），提升场景切换的流畅度。
+
+3. **架构与调试完善**
+完善消息动态注册/注销机制，避免场景切换导致的内存泄漏；加入网络抓包、协议日志、性能监控等调试工具，提升开发效率。
+
+4. **数据与配置体系优化**
+接入Unity原生数据管理体系，支持本地存档、配置热更新，实现资源与配置的动态更新能力。
+
+5. **体验优化**
+完善网络状态提示、加载动画、错误弹窗、操作反馈等UI表现；优化心跳机制、流量控制，提升弱网环境下的稳定性。
+
+6. **跨场景无缝体验**
+优化场景切换时的连接调度，实现数据无缝传递，避免因重连导致的状态丢失，让用户无感知切换场景。
+
+
+
+
+-----------------------------------------------------------------------------之前的按排和操作流程:
+
+### 结论先行
+严格对齐你Python客户端的模块化拆分逻辑，扣除已实现的`NetLoad.cs`（HTTP登录注册部分），**你还需要额外编写8个C#网络模块脚本**，即可完整复现Python模板的分层架构。
+
+---
+
+### 一、模块对应与数量说明
+你的Python模板核心拆分了7个网络代码文件 + 1个UI入口文件，对应到Unity现状：
+- 已完成：`NetLoad.cs` 覆盖了 `base_client.py` 中的HTTP短连接（注册/登录）功能
+- UI入口（`game_client.py`）由你现有场景UI脚本（如`SenceLoading.cs`）承担，无需新增网络类脚本
+- 剩余网络层职责拆分为8个C#脚本，和Python的“工具层-基础网络层-连接层-业务层”分层完全对应
+
+---
+
+### 二、待新增脚本清单与命名建议
+以下命名均贴合Unity开发习惯，同时严格对齐Python模块的职责边界，其中管理器类均采用单例模式，和你现有`NetLoad.Instance`的调用风格保持一致：
+
+#### 1. 工具层（对应 common/utils）
+1. **`GameLogger.cs`**
+   对应 Python 的 `logger.py`
+   静态工具类，负责统一日志输出与本地文件写入，支持按账号分文件记录，封装所有日志写入方法。
+
+2. **`GameConfig.cs`**
+   对应 Python 的 `config_helper.py`
+   静态工具类，负责读取服务端地址、端口等配置，替代代码里硬编码的baseUrl，统一管理所有网络配置项。
+
+#### 2. 基础网络层（对应 common/network/base_client.py 剩余功能）
+3. **`NetProtocol.cs`**
+   对应 `base_client.py` 中的封包解包核心逻辑
+   静态工具类，实现与Python完全一致的二进制封包、解包算法，定义协议常量，提供`MakePacket`和`ParsePacket`通用方法。
+
+4. **`GameDataCenter.cs`**
+   对应 `base_client.py` 中的全局状态变量
+   单例模式，全局存储登录token、玩家ID、玩家名称、玩家数据、道具数据等核心状态，替代Python里的全局变量。
+
+#### 3. 网络连接层（对应 client/network）
+5. **`WebSocketManager.cs`**
+   对应 Python 的 `client_socket.py`
+   单例模式，WebSocket长连接核心管理器，负责建立连接、断开连接、消息接收循环、粘包处理、原始数据缓存。
+
+6. **`MessageDispatcher.cs`**
+   对应 Python 的 `message_handler.py`
+   单例模式，维护「协议ID → 处理函数」的路由映射表，收到完整数据包后根据包ID分发给对应业务处理器，是网络层到业务层的中转枢纽。
+
+#### 4. 业务处理层（对应 client/handlers）
+7. **`LoginMsgHandler.cs`**
+   对应 Python 的 `login_handler.py`
+   负责登录相关协议处理：构造并发送登录请求包、维护心跳定时发送、处理登录响应，对接`WebSocketManager`发送消息。
+
+8. **`HallMsgHandler.cs`**
+   对应 Python 的 `hall_handler.py`
+   负责大厅所有业务协议处理：玩家信息推送、道具列表同步、邮件系统、修改昵称等请求与响应，处理完成后同步更新`GameDataCenter`里的全局数据。
+
+---
+
+### 补充说明
+如果希望减少文件数量、更贴合“写在一堆”的习惯，可以做两处合并：
+- 将`NetProtocol.cs`和`GameConfig.cs`合并为 `NetDefine.cs`（放协议常量+配置）
+- 将`GameLogger.cs`合并进`GameDataCenter.cs`
+
+精简后最少需要6个脚本即可覆盖全部模块功能。
+
+
+
+
+操作流程: 
+
+### 一、终端操作步骤与直观效果
+按正常使用顺序，完整交互流程如下：
+
+1. **启动程序**
+   - 操作：双击 `scripts/start_client.bat`，或在终端执行 `python client/game_client.py`
+   - 效果：终端窗口打开，打印主菜单标题，显示3个选项：1.注册  2.登录  3.退出
+
+2. **账号注册**
+   - 操作：输入 `1` 回车，再按提示输入「用户名 密码」（空格分隔）后回车
+   - 效果：终端打印「注册成功」或「注册失败：xxx原因」，执行完成后停留在主菜单
+
+3. **账号登录**
+   - 操作：输入 `2` 回车，再按提示输入「用户名 密码」（空格分隔）后回车
+   - 效果：
+     - 登录失败：打印失败原因，停留在主菜单
+     - 登录成功：打印「登录成功」，后台自动连接游戏服务器，随即进入游戏内功能菜单，显示 1.查看数据  2.返回登录界面
+
+4. **查看玩家数据**
+   - 操作：在游戏内菜单输入 `1` 回车
+   - 效果：终端打印玩家ID、名称、等级、积分，以及所有道具的ID和数量；如果服务器数据还未同步完成，会提示「未获取到数据」
+
+5. **返回登录界面**
+   - 操作：在游戏内菜单输入 `2` 回车
+   - 效果：断开与游戏服务器的WebSocket连接，打印「已断开游戏连接，返回主菜单」，回到最开始的注册/登录主菜单
+
+6. **退出程序**
+   - 操作：在主菜单输入 `3` 回车
+   - 效果：打印退出提示，程序终止运行
+
+---
+
+### 二、每步操作的底层实现逻辑（函数调用 + 文件读写）
+
+#### 1. 程序启动阶段
+- **入口文件**：`client/game_client.py`，执行 `main()` 函数
+- **前置初始化**：
+  1. 自动将项目根目录加入Python路径，保证所有模块导入正常
+  2. Windows系统下设置异步事件循环策略，兼容WebSocket异步运行
+  3. 调用 `common/utils/config_helper.py` 中的 `get_client_config()` 函数
+     - 读取文件：`client/ui/config.ini`
+     - 读取内容：HTTP认证服务地址 `BASE_AUTH`、WebSocket业务服务地址 `WS_BIZ`
+  4. 配置加载后存入 `common/network/base_client.py` 的全局变量，供全项目使用
+- 初始化完成后进入主菜单循环，等待用户输入
+
+#### 2. 注册功能
+- **触发入口**：主菜单选择1 → 调用 `common/network/base_client.py` 中的 `register(username, password)` 函数
+- **执行逻辑**：
+  1. 从全局变量读取 `BASE_AUTH` 地址，拼接 `/user/signup` 注册接口
+  2. 组装账号密码为JSON格式，发送 HTTP POST 请求
+  3. 根据服务端返回的状态码判断结果，打印成功/失败信息到终端
+- **涉及文件**：仅读取 `config.ini` 获取服务端地址，不写入本地文件
+
+#### 3. 登录功能（HTTP验证 + WebSocket连接两步）
+##### 第一步：HTTP账号验证
+- **触发入口**：主菜单选择2 → 调用 `common/network/base_client.py` 中的 `login(username, password)` 函数
+- **执行逻辑**：
+  1. 发送 HTTP POST 请求到 `BASE_AUTH/user/login` 接口
+  2. 验证成功后，将服务端返回的 `token`、`player_id`、`player_name` 存入全局变量 `LOGIN_TOKEN`、`PLAYER_ID`、`PLAYER_NAME`
+  3. 返回布尔值控制流程，登录成功则进入游戏内菜单
+- **涉及文件**：读取 `config.ini` 获取接口地址
+
+##### 第二步：后台启动WebSocket长连接
+- **触发入口**：`login` 返回True后，启动后台守护线程，执行 `client/network/client_socket.py` 中的 `run_ws_background()` 函数
+- **完整执行链路**：
+  1. `run_ws_background` 创建独立异步事件循环，执行 `ws_connect()` 协程
+  2. `ws_connect` 读取全局 `WS_BIZ` 地址，建立WebSocket长连接
+  3. 连接成功后，调用 `client/handlers/login_handler.py` 的 `send_login_req(ws)` 发送登录协议包
+     - 动态导入协议文件：`common/protos/common/2_login_pb2.py`
+     - 调用 `base_client.py` 中的 `make_packet()` 按规则完成二进制封包
+  4. 同时启动后台协程执行 `send_heartbeat(ws)`，每5秒自动发送一次心跳包保活
+  5. 进入收包循环，持续接收服务端推送的二进制数据
+  6. 收到数据后调用 `base_client.py` 的 `parse_packet()` 解包，提取出包ID和包体
+  7. 调用 `client/network/message_handler.py` 的 `dispatch_message(packid, body)` 进行消息分发
+     - 根据包ID查 `MSG_ROUTE` 映射表，转发到对应业务处理器
+     - 包ID 10180 → 调用 `client/handlers/hall_handler.py` 的 `handle_player_info()` → 更新全局玩家数据 `PLAYER_DATA`
+     - 包ID 10280 → 调用 `client/handlers/hall_handler.py` 的 `handle_item_list()` → 更新全局道具数据 `ITEM_DATA`
+  8. 玩家数据和道具数据都接收完成后，自动调用 `save_game_data()` 函数
+     - 写入文件：`gameplay-{用户名}.txt`
+     - 写入内容：玩家基础信息 + 道具ID与数量列表
+- **日志记录**：全程关键节点调用 `common/utils/logger.py` 的 `write_log()` 函数
+  - 未登录时写入公共日志：`logs/client.log`
+  - 登录后写入分账号日志：`game_test-{用户名}.log`
+
+#### 4. 查看数据功能
+- **触发入口**：游戏内菜单选择1 → 执行 `gameplay_menu()` 内的对应分支
+- **执行逻辑**：直接读取本地文件 `gameplay-{当前用户名}.txt`，文件存在则打印全部内容，不存在则提示未获取到数据
+- **涉及文件**：只读本地存档文件，该文件由大厅消息处理器在数据同步后自动写入
+
+#### 5. 断开连接、返回主菜单
+- **触发入口**：游戏内菜单选择2 → 将全局事件 `WS_STOP_EVENT` 置为触发状态
+- **执行逻辑**：
+  1. WebSocket收包循环检测到 `WS_STOP_EVENT` 置位，立即退出循环、关闭WebSocket连接
+  2. 后台WebSocket线程自然结束，`gameplay_menu` 循环终止，回到 `main()` 的主菜单循环
+  3. 日志中记录断开连接事件
+
+#### 6. 退出程序
+- **触发入口**：主菜单选择3 → `break` 跳出主循环，`main` 函数执行完毕
+- 程序自然退出，所有后台守护线程随主线程一同终止。
+
+
+
+-----------------------------------------------------------------------------------现在的安排和操作流程:
+
+# 现在的安排和操作流程
+## 一、整体架构脚本规划合理性复盘
+### 1. 脚本分层设计核心逻辑（优先贴合Unity场景操作需求，其次对齐Python协议底层）
+整套网络脚本分为**全局常驻单例底座**、**静态工具类**、**场景临时业务处理器**三层，设计初衷并非单纯为和Python代码一一对应，而是以「三条核心操作需求」为落地重心，Python模板仅提供底层协议、封包、日志的统一标准，二者分工清晰：
+1. **重心优先级**：玩家三层操作流程（登录进大厅→大厅展示玩家数据→多场景切换重连+连接状态提示）> Python协议底层复用 > 脚本一对一映射
+2. 现有8个Net网络脚本分层设计合理性判定
+    - 全局5个DontDestroyOnLoad单例（WebSocketManager/MessageDispatcher/GameDataCenter/GameConfig/GameLogger）：**完全合理**
+      玩家登录后的token、玩家ID、服务器地址、日志、消息路由、WebSocket连接实例均为跨场景全局数据，一旦登录成功全程不能销毁；切换场景仅修改WS目标端口、临时注册/注销场景消息回调，无需重复初始化基础网络能力，完美适配「多场景切换重建连接」的核心需求。
+    - 静态工具类NetProtocol.cs：**合理**
+      仅封装和Python完全一致的二进制封包、解包静态方法，无状态、无需挂载，所有WS收发逻辑统一调用，保证客户端和服务端协议解析完全兼容，复用game_client.txt底层RPC打包逻辑。
+    - 场景临时挂载处理器（NetLoad、SenceLoading、HallMsgHandler，后续扩展Map/Fight/BattleMsgHandler）：**适配当前需求，可扩展**
+      业务消息处理逻辑跟随场景生命周期销毁，进入场景注册消息监听、退出场景注销，避免多场景消息回调冲突、内存泄漏；Load场景专属HTTP登录注册、home场景专属大厅玩家数据解析，贴合UI场景分离的交互模式。
+3. 现有已完成脚本定位补充
+    - NetLoad.cs：Load场景专属HTTP网络层，独立处理注册/登录HTTP请求，不参与WS长连接逻辑，挂载Load场景NetManager，单例跨场景保留；
+    - SenceLoading.cs：纯UI交互脚本，仅绑定输入框、登录注册按钮，调度NetLoad执行登录，登录成功跳转home场景，仅存在于Load场景，场景销毁自动释放。
+
+### 2. 已导入第三方库支撑能力
+已全部导入5类必备依赖，覆盖整套网络功能底层需求：
+1. WebSocket客户端库：支撑多端口WS长连接、心跳、二进制粘包缓存收发；
+2. Protobuf序列化库：复用Python原始proto协议文件，完成消息体序列化/反序列化；
+3. Newtonsoft.Json：解析HTTP登录注册返回JSON数据；
+4. INI配置解析库：读取`Connect-Config.ini`全局网络服务端口配置；
+5. 异步主线程调度工具：解决WS异步线程无法操作UI的Unity线程限制差异。
+
+### 3. Python模板与Unity实现的差异化约束（全程落地时严格遵守）
+1. 交互形式：抛弃终端菜单，全部由UGUI输入框、按钮驱动操作，数据自动绑定UI文本展示，无终端打印；
+2. 流程结构：分段场景驱动，HTTP登录仅在Load场景，WS大厅数据仅在home场景，切换map/fight/battle独立重建WS连接；
+3. 连接模式：同一时间仅维持一条业务WS连接，场景切换流程固定：断开旧WS→卸载场景→加载新场景→连接对应服务端口→发送WS登录包；
+4. 线程模型：WS异步收到消息后，通过主线程调度器回主线程，再更新GameDataCenter和UI，禁止子线程直接操作UGUI；
+5. 数据更新：服务端推送玩家/道具消息后自动刷新大厅UI，无需玩家手动查询；
+6. 文件读写：日志、本地存档、INI配置统一使用`Application.persistentDataPath`/`Application.dataPath`，不使用Python相对路径；
+    网络INI配置读取固定路径示例：`Path.Combine(Application.dataPath, "Scenes/assert-config/Connect-Config.ini")`。
+
+## 二、完整脚本挂载与生命周期安排
+### （一）全局常驻单例（Load场景初始化，DontDestroyOnLoad，全程不销毁）
+挂载对象：Load场景下空物体`GlobalNetRoot`，进入home/map/fight所有场景不会销毁
+1. GameConfig.cs
+    - 职责：读取`Connect-Config.ini`内所有服务端地址配置（HTTP认证、hall/map/map/bag/card/fight/battle七类WS端口），全局只读，替代Python config_helper.py；
+2. GameLogger.cs
+    - 职责：分账号本地日志写入、控制台打印日志，复用Python日志分文件逻辑，存储路径切换为Unity持久化目录；
+3. GameDataCenter.cs
+    - 职责：全局唯一数据中心，存储登录token、player_id、玩家名称、等级、积分、魔力、体力、道具列表，跨场景共享玩家数据；
+4. WebSocketManager.cs
+    - 职责：统一管理WS连接创建、断开、心跳5s定时发送、二进制缓存粘包处理、切换场景修改目标WS地址；
+5. MessageDispatcher.cs
+    - 职责：全局消息分发路由，维护「协议包ID→处理回调」映射表，场景加载时注册对应业务处理器，场景退出注销回调；
+
+### （二）静态工具类（无需挂载，全局直接调用）
+NetProtocol.cs：静态方法封装MakePacket封包、ParsePacket解包，完全复用game_client.txt RPC二进制打包规则，所有WS消息收发统一调用。
+
+### （三）场景临时挂载脚本（跟随场景加载销毁，仅当前场景生效）
+1. Load场景专属
+    - NetLoad.cs：挂载Load场景NetManager物体，单例全局保留；负责HTTP注册、登录接口请求，登录成功后写入token、player_id到GameDataCenter；
+    - SenceLoading.cs：挂载Load场景Canvas根节点，仅Load场景存在；绑定账号/密码输入框、注册/登录按钮、错误提示文本，仅处理UI点击交互，不写网络逻辑；
+2. home场景专属
+    - HallMsgHandler.cs：挂载home场景NetManager物体；场景加载时向MessageDispatcher注册大厅消息回调（10180玩家信息、10280道具推送）；收到服务端推送后更新GameDataCenter，刷新大厅UI玩家名称、ID、等级、积分、魔力、体力；场景退出时注销回调、触发WebSocketManager断开大厅WS连接；
+    - 连接状态提示UI：挂载home场景Canvas右下角，30号字体Text，每帧读取WebSocketManager连接状态实时刷新；
+3. map/fight/battle/LianjiMingDan等其他场景通用配置
+    - 对应场景专属MsgHandler（MapMsgHandler/FightMsgHandler等）：场景加载注册对应服务器协议回调，场景退出注销；
+    - 统一右下角30号字体连接状态Text：实时展示当前WS连接状态、当前连接服务节点（hall/map/fight）；
+    - 场景切换调度逻辑由扩展后的SenceLoading调度，固定流程：WebSocketManager.CloseConnect() → 场景加载 → WebSocketManager.Connect(对应场景WS地址) → LoginMsgHandler发送WS登录包。
+
+### （四）辅助配置工具
+INI解析工具：全局静态工具，仅读取网络配置文件`Connect-Config.ini`，路径固定`Path.Combine(Application.dataPath, "Scenes/assert-config/Connect-Config.ini")`，全场景统一获取HTTP、各业务WebSocket服务地址。
+
+## 三、玩家完整操作全流程（以三大核心操作需求为核心）
+### 前置初始化：程序启动默认进入Load场景
+1. 场景加载自动执行`GlobalNetRoot`全局单例Awake初始化：
+    - GameConfig读取`Connect-Config.ini`中所有服务端端口配置；
+    - GameLogger初始化日志持久化目录；
+    - WebSocketManager、MessageDispatcher、GameDataCenter完成实例创建，跨场景常驻；
+2. Load场景Canvas加载完成，SenceLoading自动绑定输入框、按钮、错误提示文本监听。
+
+### 操作一：Load场景账号登录，跳转home大厅
+1. 玩家操作
+    在Input_Account输入账号、Input_Pwd输入密码，点击Btn_Login按钮；
+2. UI层执行（SenceLoading）
+    校验账号密码非空，按钮置灰防止重复点击，调用NetLoad.Instance.DoLogin；
+3. HTTP网络层执行（NetLoad）
+    从GameConfig读取`Connect-Config.ini`内BASE_AUTH地址，拼接HTTP登录接口，序列化JSON账号密码发送POST请求，超时10s；
+4. 登录成功分支
+    解析服务端返回token、player_id，存入全局GameDataCenter；回调触发UI跳转逻辑，执行`SceneManager.LoadScene("home")`；
+5. 登录失败分支
+    按钮恢复可点击，错误文本展示服务端返回失败信息，3秒后自动清空提示；
+6. 底层日志同步
+    GameLogger记录登录HTTP请求、返回结果日志，写入本地日志文件。
+
+### 操作二：home大厅场景加载，自动拉取并展示玩家账号数据
+1. home场景加载完成，自动挂载的HallMsgHandler执行初始化
+    - 向全局MessageDispatcher注册大厅协议回调（10180玩家信息、10280道具列表）；
+    - 读取GameConfig从`Connect-Config.ini`加载的大厅WS地址，调用WebSocketManager建立ws://127.0.0.1:11012长连接；
+    - 连接成功后，LoginMsgHandler读取GameDataCenter存储的token、player_id，组装WS登录二进制包（复用NetProtocol封包逻辑）发送至服务端；
+    - 启动5s定时心跳协程，持续保活大厅连接；
+2. 服务端推送玩家信息包（packid=10180）
+    WebSocket异步接收二进制数据，NetProtocol解包后由MessageDispatcher分发至HallMsgHandler；
+    异步线程数据通过主线程调度器切回主线程，更新GameDataCenter内玩家Name、ID、level、score、Mana魔力、TiLi体力；
+3. UI自动刷新
+    大厅User-info面板所有文本控件直接读取GameDataCenter全局数据，实时展示玩家全部信息；
+4. 本地数据持久化
+    玩家、道具数据同步写入本地账号专属存档文件，GameLogger记录大厅数据同步日志；
+5. 右下角状态提示
+    30号小字实时显示：当前连接【hall大厅服务器】，连接状态：已连接。
+
+### 操作三：跨场景切换，重建对应服务WS连接+全局连接状态提示
+以home切换map场景为例，所有场景切换流程统一：
+1. 玩家点击场景切换按钮，触发场景调度逻辑
+    - 调用WebSocketManager主动断开当前大厅WS长连接，心跳循环停止；
+    - MessageDispatcher注销当前HallMsgHandler所有消息回调，释放内存；
+2. 加载目标map场景
+    - map场景加载完成，挂载MapMsgHandler初始化；
+    - 读取GameConfig中从`Connect-Config.ini`预加载的map服务WS地址ws://127.0.0.1:11021，建立全新WS连接；
+    - 复用LoginMsgHandler发送WS登录包，开启新场景心跳保活；
+    - 注册地图专属协议消息回调；
+3. 场景右下角统一状态UI
+    固定30号字号文本，实时刷新内容格式：`当前服务：map地图服务器 | 连接状态：正常/断开/重连中`；
+4. 差异化规则说明
+    所有场景切换均遵循「断旧连接→切场景→建新连接→重发WS登录包」规则，同一时间仅保持一条业务长连接；战斗、匹配、联机名单场景执行完全相同流程，仅切换对应WS端口与业务消息处理器。
+
+## 四、扩展功能预留与当前功能边界
+### 1. 当前已闭环交互边界
+仅完成三大核心操作：Load场景HTTP账号登录跳转大厅、home大厅展示玩家基础数据、多场景切换重建WS连接+右下角连接状态提示；仅处理登录、大厅玩家信息推送两类协议交互，地图、战斗、匹配玩法协议暂未接入。
+### 2. 底层复用保证
+整套WS封包、解包、日志、心跳逻辑完全复用game_client.txt中Python客户端底层标准，协议二进制格式、消息ID映射规则保持一致，服务端无需做任何修改适配。
+### 3. 后续扩展预留
+1. 新增map/fight/battle/LianjiMingDan专属MsgHandler，挂载对应场景，注册专属协议回调；
+2. 扩展`Connect-Config.ini`配置条目，新增更多服务节点WS地址，GameConfig自动兼容读取；
+3. 扩展GameDataCenter，存储卡牌、房间、战斗临时数据；
+4. 无任何回合配置文件相关逻辑、读取代码、路径引用，所有配置读取仅围绕`Connect-Config.ini`网络配置文件展开。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

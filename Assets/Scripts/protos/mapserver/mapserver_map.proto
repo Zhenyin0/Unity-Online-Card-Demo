@@ -1,0 +1,18 @@
+package mapserver_map;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	mapserver_map = 201;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_PlayerMapNotice  = 80;
+}
+
+message PlayerMapNotice{
+	optional int64 player_id = 1;
+	optional int64 map_id = 2;
+	optional string map_name = 3;
+	repeated int32  region_ids = 4;
+	optional int32 is_open = 5;
+}

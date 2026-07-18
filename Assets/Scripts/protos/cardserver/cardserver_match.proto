@@ -1,0 +1,31 @@
+import "common/common.proto";
+
+package cardserver_match;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	cardserver_match = 403;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_SelectToGamCardCharReq = 1;
+	CMD_SelectToGamCardCharRes = 2;
+	CMD_PlayerCardToGamNotice  = 80;
+}
+
+message PlayerCardToGamNotice{
+	repeated common.CharForCard charforcard_list = 1;
+}
+
+//进入选卡阶段发送选卡信息
+message SelectToGamCardCharReq{
+	optional int64 player_id = 1;           //玩家ID
+	optional int64 char_id = 2;
+	repeated common.Card card_list = 3;
+}
+
+//回应选卡通知
+message SelectToGamCardCharRes{
+    repeated common.CharForCard charforcard_list = 1;     
+}
+

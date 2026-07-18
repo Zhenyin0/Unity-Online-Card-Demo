@@ -1,0 +1,45 @@
+import "common/common.proto";
+
+package mapserver_build;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	mapserver_build = 203;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_GetBuildProReq = 1;
+	CMD_GetBuildProRes = 2;
+
+	CMD_PlayerBuildNotice  = 80;
+	CMD_ChangeBuilddNotice = 81;
+}
+
+
+
+message OneBuild{
+	optional int64 build_id = 1;
+	optional int64 build_start_time = 2;
+	optional int64 build_end_time = 3;
+	optional int64 last_product_time = 4;
+}
+
+message PlayerBuildNotice{
+	repeated OneBuild build_list = 1;
+}
+
+message ChangeBuilddNotice{
+	optional OneBuild build = 1;
+}
+
+message GetBuildProReq{
+	optional int64 player_id = 1;           //玩家ID
+	optional int64 region_id = 2;
+	optional int64 build_id = 3;
+	optional int64 last_product_time = 4;
+	optional int64 update_time =5;
+}
+
+message GetBuildProRes{
+    repeated common.Bag bag_list = 1;     
+}

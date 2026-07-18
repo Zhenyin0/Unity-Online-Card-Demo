@@ -1,0 +1,76 @@
+﻿{
+  "cardDatas": [
+    {
+      "charId": 1,
+      "isExpanded": false,
+      "liftedHandCardIds": [],
+      "userCardIds": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        3,
+        3,
+        3,
+        11
+      ],
+      "isUserAreaCard": true
+    },
+    {
+      "charId": 2,
+      "isExpanded": false,
+      "liftedHandCardIds": [],
+      "userCardIds": [
+        12,
+        17,
+        19,
+        19,
+        19,
+        19,
+        19,
+        20,
+        20,
+        20
+      ],
+      "isUserAreaCard": true
+    },
+    {
+      "charId": 3,
+      "isExpanded": false,
+      "liftedHandCardIds": [],
+      "userCardIds": [
+        22,
+        22,
+        22,
+        22,
+        22,
+        22,
+        27,
+        28,
+        29,
+        30
+      ],
+      "isUserAreaCard": true
+    },
+    {
+      "charId": 4,
+      "isExpanded": false,
+      "liftedHandCardIds": [],
+      "userCardIds": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ],
+      "isUserAreaCard": true
+    }
+  ]
+}

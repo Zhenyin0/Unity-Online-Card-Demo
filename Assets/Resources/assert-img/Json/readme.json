@@ -1,0 +1,1178 @@
+{
+  "player":{
+    "id":1,
+    "name":"咕哒子",
+    "star":5,
+    "HP":500,
+    "ATK":50,
+    "mana":10,
+    "stamina":50,
+    "card_id":[1,2,3,4,5,6,7,8,9,10,11],
+
+    "炽天使咒印.png": {
+    "id": 1,
+    "name": "炽天使咒印",
+    "effect": "造成150伤害",
+    "category": "仪式",
+    "mana": 3,
+    "stamina": null,
+    "number": 3,
+    "Noble-Phantasm":false,
+    "all-round":false
+   },
+  "十字磔咒印.png": {
+    "id": 2,
+    "name": "十字磔咒印",
+    "effect": "抵抗100伤害",
+    "category": "场地",
+    "mana": 1,
+    "stamina": null,
+    "number": 3,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "应源泉咒印.png": {
+    "id": 3,
+    "name": "应源泉咒印",
+    "effect": "回复200点生命值",
+    "category": "永续",
+    "mana": 2,
+    "stamina": null,
+    "number": 3,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "宝石剑泽尔里奇.png": {
+    "id": 4,
+    "name": "宝石剑泽尔里奇",
+    "effect": "造成300点伤害",
+    "category": "反击",
+    "mana": 3,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "凛的吊坠.png": {
+    "id": 5,
+    "name": "凛的吊坠",
+    "effect": "抵抗致命伤害.存续50",
+    "category": "装备",
+    "mana": 0,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "红宝石ruby.png": {
+    "id": 6,
+    "name": "红宝石ruby",
+    "effect": "增幅伤害100点",
+    "category": "装备",
+    "mana": 1,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "蓝宝石sapphire.png": {
+    "id": 7,
+    "name": "蓝宝石sapphire",
+    "effect": "降低受伤150",
+    "category": "装备",
+    "mana": 1,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "炽天覆七重圆环.png": {
+    "id": 8,
+    "name": "炽天覆七重圆环",
+    "effect": "抵抗受伤 500",
+    "category": "仪式",
+    "mana": 5,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "中心竞争者.png": {
+    "id": 9,
+    "name": "中心竞争者",
+    "effect": "破坏敌方装备，并造成 100 伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 1,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "黑键迎击.png": {
+    "id": 10,
+    "name": "黑键迎击",
+    "effect": "无视对方防御造成 300 伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 6,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "黑键蓄力.png": {
+    "id": 11,
+    "name": "黑键蓄力",
+    "effect": "受到伤害反伤对方 200",
+    "category":"反击",
+    "mana": null,
+    "stamina": 6,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  }
+},
+"XiGeMa":{
+    "id":2,
+    "name":"西格玛",
+    "star":3,
+    "HP":500,
+    "ATK":200,
+    "mana":10,
+    "stamina":null,
+    "card_id":[12,13,14,15,16,17,18,19,20,21],
+
+  "西格玛的肖像.png": {
+    "id": 12,
+    "name": "西格玛的肖像",
+    "effect": "【Lancer】仅仅是个替身而已（ATK/0 DEF/1000）",
+    "category": "灵摆",
+    "mana": 6,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "同伴的惨死.png": {
+    "id": 13,
+    "name": "同伴的惨死",
+    "effect": "造成 250 点伤害",
+    "category": "仪式",
+    "mana": null,
+    "stamina": 3,
+    "number": 3,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "冷酷持枪.png": {
+    "id": 14,
+    "name": "冷酷持枪",
+    "effect": "造成 150 点伤害",
+    "category": "通常",
+    "mana": null,
+    "stamina": 1,
+    "number": 7,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "麻木世界的觉悟.png": {
+    "id": 15,
+    "name": "麻木世界的觉悟",
+    "effect": "抵抗 300 点伤害",
+    "category": "永续",
+    "mana": null,
+    "stamina": 3,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "记录于书籍的故事.png": {
+    "id": 16,
+    "name": "记录于书籍的故事",
+    "effect": "清除对方的灵摆或者是怪兽或者是替身",
+    "category": "装备",
+    "mana": null,
+    "stamina": 9,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "命运转折的警示.png": {
+    "id": 17,
+    "name": "命运转折的警示",
+    "effect": "默认抵抗 100 伤害",
+    "category": "装备",
+    "mana": null,
+    "stamina": 1,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "故事中的西格玛.png": {
+    "id": 18,
+    "name": "故事中的西格玛",
+    "effect": "【Lancer】明显带着不祥的恶意（ATK/50 DEF/250）",
+    "category": "怪兽",
+    "mana": 3,
+    "stamina": null,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "团队的讨论.png": {
+    "id": 19,
+    "name": "团队的讨论",
+    "effect": "恢复 250 血",
+    "category": "仪式",
+    "mana": null,
+    "stamina": 3,
+    "number": 10,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "有所举措的行为.png": {
+    "id": 20,
+    "name": "有所举措的行为",
+    "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+    "category": "通常",
+    "mana": null,
+    "stamina": 2,
+    "number": 7,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "突然的袭击.png": {
+    "id": 21,
+    "name": "突然的袭击",
+    "effect": "该回合不及时丢出，失去灵摆或者是怪兽或者是替身，或者是自我造成 200 伤害",
+    "category": "通常",
+    "mana": null,
+    "stamina": [0,50],
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":true
+  }
+},
+"KuangXinTu":{ 
+  "id":3,
+  "name":"狂信子",
+  "star":4,
+  "HP":1500,
+  "ATK":300,
+  "mana":10,
+  "stamina":null,
+  "card_id":[22,23,24,25,26,27,28,29,30,31],
+
+  "狂信徒.png": {
+    "id": 22,
+    "name": "狂信徒",
+    "effect": "追杀圣杯参与者的一位信使ATK/ 500 DEF/ 200",
+    "category": "怪兽",
+    "mana": 5,
+    "stamina": null,
+    "number": 18,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "妄想心音.png": {
+    "id": 23,
+    "name": "妄想心音",
+    "effect": "造成 500 点伤害",
+    "category": "速攻",
+    "mana": 5,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "暴力的破窗突入.png": {
+    "id": 24,
+    "name": "暴力的破窗突入",
+    "effect": "造成 100 点伤害，抵抗 100 伤害",
+    "category": "场地",
+    "mana": 4,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "幻想血统.png": {
+    "id": 25,
+    "name": "幻想血统",
+    "effect": "完整复制对方的加成",
+    "category": "仪式",
+    "mana": 10,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "狂烈信徒的迥异.png": {
+    "id": 26,
+    "name": "狂烈信徒的迥异",
+    "effect": "抵抗 200 伤害",
+    "category": "通常",
+    "mana": null,
+    "stamina": 2,
+    "number": 18,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "空想电脑.png": {
+    "id": 27,
+    "name": "空想电脑",
+    "effect": "造成 500 点伤害",
+    "category": "速攻",
+    "mana": 5,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "狂想闪影.png": {
+    "id": 28,
+    "name": "狂想闪影",
+    "effect": "造成 50 点伤害，回复 200 点生命",
+    "category": "永续",
+    "mana": 3,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "梦想髓液.png": {
+    "id": 29,
+    "name": "梦想髓液",
+    "effect": "整体造成 100 伤害",
+    "category": "永续",
+    "mana": 6,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "冥想神经.png": {
+    "id": 30,
+    "name": "冥想神经",
+    "effect": "抵抗 150 伤害，恢复 50 生命",
+    "category": "仪式",
+    "mana": 2,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+    "妄想心音击中-即死.png": {
+    "id": 31,
+    "name": "妄想心音击中-即死",
+    "effect": "造成 1000 伤害，清除自身所有提升",
+    "category": "速攻",
+    "mana": 9,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  }
+},
+"HengFeiJi":{
+  "id":4,
+  "name":"弗朗索瓦",
+  "star":4,
+  "HP":1000,
+  "ATK":25,
+  "mana":10,
+  "stamina":null,
+  "card_id":[32,33,34,35,36,37,38,39,40,41],
+
+   "螺湮城教本.png": {
+    "id": 32,
+    "name": "螺湮城教本",
+    "effect": "抵抗 200 点伤害，解放双怪兽槽，并使本场，场上海魔抵抗一次致命攻击",
+    "category": "装备",
+    "mana": 10,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "战局降临.png": {
+    "id": 33,
+    "name": "战局降临",
+    "effect": "抵抗 200 点伤害，回复 100 点生命，切换战局位置，改为任意前方或后方",
+    "category": "场地",
+    "mana": 5,
+    "stamina": null,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "迎击-跨越数百年的我.png": {
+    "id": 34,
+    "name": "迎击-跨越数百年的我",
+    "effect": "每回合默认攻击 50 点伤害",
+    "category": "装备",
+    "mana": 5,
+    "stamina": null,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "感到忧郁的两人.png": {
+    "id": 35,
+    "name": "感到忧郁的两人",
+    "effect": "抵抗 150 点伤害，将本回合的受到的伤害转移",
+    "category": "永续",
+    "mana": 9,
+    "stamina": null,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "无垠的花海.png": {
+    "id": 36,
+    "name": "无垠的花海",
+    "effect": "回复自身 500 点血量，并清除对方所有的加成",
+    "category": "场地",
+    "mana": 10,
+    "stamina": null,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "污染的裂口海星.png": {
+    "id": 37,
+    "name": "污染的裂口海星",
+    "effect": "【海魔】荆皮类型的海洋生物（ATK/ 100 DEF/ 100）",
+    "category": "怪兽",
+    "mana": 2,
+    "stamina": null,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "涌现的污浊蛟龙.png": {
+    "id": 38,
+    "name": "涌现的污浊蛟龙",
+    "effect": "【海魔】浑浊污水下翻涌的恶龙（ATK/ 500 DEF/ 700）",
+    "category": "怪兽",
+    "mana": 13,
+    "stamina": null,
+    "number": 3,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "怨秽骸骨.png": {
+    "id": 39,
+    "name": "怨秽骸骨",
+    "effect": "【暴力】极度强烈的愤怒杀意（ATK/5000 DEF/7000）",
+    "category": "怪兽",
+    "mana":77,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "畸形深潜者-血肉之墙.png": {
+    "id": 40,
+    "name": "畸形深潜者-血肉之墙",
+    "effect": "【暴力】不可直视之物，每回合回复 10% 的血（ATK/3000 DEF/5000）",
+    "category": "怪兽",
+    "mana": 44,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "吞噬的畸胎.png": {
+    "id": 41,
+    "name": "吞噬的畸胎",
+    "effect": "【卵】不断地膨胀着，每回合回复 25% 的血（ATK/ 50 DEF/ 500）",
+    "category": "怪兽",
+    "mana": 10,
+    "stamina": null,
+    "number": 7,
+    "Noble-Phantasm":false,
+    "all-round":true
+  }
+}, 
+"QinShiHuang":{
+  "id":5,
+  "name":"秦始皇",
+  "star":5,
+  "HP":10000,
+  "ATK":2000,
+  "mana":10,
+  "stamina":null,
+  "card_id":[42,43,44,45,46,47,48,49,50,51],
+
+  "最古早的中西会晤.png": {
+    "id": 42,
+    "name": "最古早的中西会晤",
+    "effect": "抵抗 2000 点伤害，回复 500 点血，本回合内免受从者的伤害",
+    "category": "场地",
+    "mana": null,
+    "stamina": 29,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "晨曦的万里长城.png": {
+    "id": 43,
+    "name": "晨曦的万里长城",
+    "effect": "默认每回合清除，低于 500 的来源伤害",
+    "category": "装备",
+    "mana": null,
+    "stamina": 10,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "休闲乘风.png": {
+    "id": 44,
+    "name": "休闲乘风",
+    "effect": "回复单个从者 100% 的血量",
+    "category": "永续",
+    "mana": 27,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "锦绣江山.png": {
+    "id": 45,
+    "name": "锦绣江山",
+    "effect": "抵抗 3000 点伤害",
+    "category": "永续",
+    "mana": 30,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "兵马俑.png": {
+    "id": 46,
+    "name": "兵马俑",
+    "effect": "【人】秦始皇遗留下来的最后军队（ATK/ 150 DEF/ 500）",
+    "category": "灵摆",
+    "mana": 5,
+    "stamina": null,
+    "number": 6,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "半人马型项羽.png": {
+    "id": 47,
+    "name": "半人马型项羽",
+    "effect": "【人】是永世秦帝国仙术与神经机械学的结晶，生命达到 10% 时，每回合攻击两次（ATK/3000 DEF/5000）",
+    "category": "怪兽",
+    "mana": 72,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "秦弩.png": {
+    "id": 48,
+    "name": "秦弩",
+    "effect": "默认每回合增加 500 点伤害",
+    "category": "装备",
+    "mana": null,
+    "stamina": 15,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "秦始皇陵墓.png": {
+    "id": 49,
+    "name": "秦始皇陵墓",
+    "effect": "抵抗 5000 点伤害",
+    "category": "场地",
+    "mana": null,
+    "stamina": 50,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "秦始皇骑北极熊.png": {
+    "id": 50,
+    "name": "秦始皇骑北极熊",
+    "effect": "造成 2500 点伤害",
+    "category": "速攻",
+    "mana": 25,
+    "stamina": null,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "秦始皇骑核弹.png": {
+    "id": 51,
+    "name": "秦始皇骑核弹",
+    "effect": "造成伤害，使得敌方整体减少 50% 的生命",
+    "category": "速攻",
+    "mana": 66,
+    "stamina": null,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  }
+},
+"DaZhongMa":{
+  "id":6,
+  "name":"大仲马",
+  "star":4,
+  "HP":500,
+  "ATK":50,
+  "mana":10,
+  "stamina":null,
+  "card_id":[52,53,54,55,56,57,58,59,60,61],
+
+  "伟大作家的抖机灵.png": {
+    "id": 52,
+    "name": "伟大作家的抖机灵",
+    "effect": "抵抗 200 点伤害，恢复 150 点生命",
+    "category": "永续",
+    "mana": null,
+    "stamina": 5,
+    "number": 7,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "创作宝具.png": {
+    "id": 53,
+    "name": "创作宝具",
+    "effect": "造成 50 点伤害，从卡库抽取两张卡",
+    "category":"仪式" ,
+    "mana": 5,
+    "stamina": null,
+    "number": 8,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "轰击五星.png": {
+    "id": 54,
+    "name": "轰击五星",
+    "effect": "默认接下来五回合，每回合结束造成对方 500 点伤害",
+    "category": "速攻",
+    "mana": 25,
+    "stamina": null,
+    "number": 5,
+    "Noble-Phantasm":true,
+    "all-round":true
+  },
+  "万物必将破戒.png": {
+    "id": 55,
+    "name": "万物必将破戒",
+    "effect": "清除对方在场的单个从者或者是，单个怪兽",
+    "category": "装备",
+    "mana": 10,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "赝品-天地归离之星.png": {
+    "id": 56,
+    "name": "赝品-天地归离之星",
+    "effect": "将对方的整体血量压制在 10% 之下",
+    "category": "装备",
+    "mana": 100,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "穿刺之枪.png": {
+    "id": 57,
+    "name": "穿刺之枪",
+    "effect": "造成一千点伤害，无抵抗伤害时，必杀从者",
+    "category": "装备",
+    "mana": 27,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "阿瓦隆剑鞘.png": {
+    "id": 58,
+    "name": "阿瓦隆剑鞘",
+    "effect": "默认每回合 100% 反弹首次伤害",
+    "category": "装备",
+    "mana": 18,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":true
+  },
+  "爱因兹贝伦魔术礼装.png": {
+    "id": 59,
+    "name": "爱因兹贝伦魔术礼装",
+    "effect": "以最低 1 魔力打出，造成 20 点伤害，以本回合最高魔力打出，造成 2 的幂乘以 20 的伤害：第 9 魔力打出，造成 128*20=2560 伤害，默认以最高魔力打出",
+    "category": "装备",
+    "mana": [1,2,3,4,5,6,7,8,9],
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "释提桓因?金刚杵.png": {
+    "id": 60,
+    "name": "释提桓因?金刚杵",
+    "effect": "造成 1000 点伤害，或清除对方当前的所有伤害抵抗",
+    "category": "装备",
+    "mana": 50,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "机关枪刃（Gunblade）.png": {
+    "id": 61,
+    "name": "机关枪刃（Gunblade）",
+    "effect": "造成三百点伤害，可由体力打出，也可以由魔力打出",
+    "category": "装备",
+    "mana": 3,
+    "stamina": 3,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  }
+},
+"YaMaXun":{
+  "id":7,
+  "name":"希伯吕忒",
+  "star":4,
+  "HP":2000,
+  "ATK":500,
+  "mana":10,
+  "stamina":null,
+  "card_id":[62,63,64,65,66,67,68,69,70,71],
+
+  "仇招复制-射杀百头.png": {
+    "id": 62,
+    "name": "仇招复制-射杀百头",
+    "effect": "造成 9000 点伤害",
+    "category": "反击",
+    "mana": 81,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "性感的亚马逊女王.png": {
+    "id": 63,
+    "name": "性感的亚马逊女王",
+    "effect": "造成 3000 点伤害，并且使受击怪兽和灵摆该回合沉默无法攻击",
+    "category": "反击",
+    "mana": 60,
+    "stamina": null,
+    "number": 3,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "给予腰带的历史一刻.png": {
+    "id": 64,
+    "name": "给予腰带的历史一刻",
+    "effect": "抵抗 2000 点伤害，回复 500 点生命",
+    "category": "永续",
+    "mana": 17,
+    "stamina": null,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "准确射击.png": {
+    "id": 65,
+    "name": "准确射击",
+    "effect": "造成 500 点伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 5,
+    "number": 11,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "奋力投击.png": {
+    "id": 66,
+    "name": "奋力投击",
+    "effect": "造成 800 点伤害",
+    "category": "速攻",
+    "mana": 8,
+    "stamina": null,
+    "number": 11,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "腰带解放.png": {
+    "id": 67,
+    "name": "腰带解放",
+    "effect": "抵抗 3000 点伤害，减去 50% 宝具造成的伤害",
+    "category": "装备",
+    "mana": 60,
+    "stamina": null,
+    "number": 1,
+    "Noble-Phantasm":true,
+    "all-round":false
+  },
+  "仰视警戒.png": {
+    "id": 68,
+    "name": "仰视警戒",
+    "effect": "抵抗 500 点伤害，恢复 1000 点生命",
+    "category": "仪式",
+    "mana": null,
+    "stamina": 15,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "崩塌脱险.png": {
+    "id": 69,
+    "name": "崩塌脱险",
+    "effect": "抵抗 500 点伤害，若是以最后一张手牌打出，马上从牌库里抽取两张手牌",
+    "category": "永续",
+    "mana": null,
+    "stamina": 9,
+    "number": 2,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "土著民族的出征.png": {
+    "id": 70,
+    "name": "土著民族的出征",
+    "effect": "造成 3000 点伤害，抵抗 3000 点伤害，回复 3000 点生命",
+    "category": "场地",
+    "mana": null,
+    "stamina": 90,
+    "number": 1,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "无法让人遗忘的12壮举.png": {
+    "id": 71,
+    "name": "无法让人遗忘的12壮举",
+    "effect": "将预消耗的体力转换成魔力",
+    "category": "仪式",
+    "mana": null,
+    "stamina": [0,50],
+    "number": 5,
+    "Noble-Phantasm":false,
+    "all-round":false
+  }
+},
+"moster":{
+  "id":20,
+  "name":"召唤种",
+  "star":5,
+  "HP":0,
+  "ATK":0,
+  "mana":0,
+  "stamina":0,
+  "card_id":[72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87],
+
+
+  "骷髅":{ 
+    "1":{
+  "id":8,
+  "name":"红骷髅",
+  "star":1,
+  "HP":300,
+  "ATK":50,
+  "mana":10,
+  "stamina":null,
+  "card_id":[80,81,82,83]
+  },
+   "2":{
+  "id":9,
+  "name":"锥瓶骷髅",
+  "star":2,
+  "HP":500,
+  "ATK":100,
+  "mana":10,
+  "stamina":null,
+  "card_id":[80,81,82,83]
+   },
+   "3":{
+  "id":10,
+  "name":"骷髅老板",
+  "star":3,
+  "HP":600,
+  "ATK":150,
+  "mana":10,
+  "stamina":50,
+  "card_id":[80,81,82,83]
+   }
+},
+  "兽人":{ 
+    "1":{
+  "id":11,
+  "name":"西红柿人",
+  "star":2,
+  "HP":600,
+  "ATK":50,
+  "mana":10,
+  "stamina":null,
+  "card_id":[72,73,74,75]
+  },
+   "2":{
+  "id":12,
+  "name":"黄鳝人",
+  "star":2,
+  "HP":900,
+  "ATK":150,
+  "mana":10,
+  "stamina":100,
+  "card_id":[72,73,74,75]
+   },
+   "3":{
+  "id":13,
+  "name":"鸽子人",
+  "star":2,
+  "HP":700,
+  "ATK":100,
+  "mana":10,
+  "stamina":null,
+  "card_id":[72,73,74,75]
+   }
+},
+
+  "魔兽":{ 
+    "1":{
+  "id":14,
+  "name":"岩铠蟹",
+  "star":3,
+  "HP":2500,
+  "ATK":300,
+  "mana":10,
+  "stamina":null,
+  "card_id":[76,77,78,79]
+  },
+   "2":{
+  "id":15,
+  "name":"异形",
+  "star":3,
+  "HP":2500,
+  "ATK":700,
+  "mana":10,
+  "stamina":150,
+  "card_id":[76,77,78,79]
+   },
+   "3":{
+  "id":16,
+  "name":"蛟龙",
+  "star":3,
+  "HP":1500,
+  "ATK":500,
+  "mana":10,
+  "stamina":null,
+  "card_id":[76,77,78,79]
+   }
+},
+  "怪兽":{ 
+    "1":{
+  "id":17,
+  "name":"血肉狗",
+  "star":4,
+  "HP":3500,
+  "ATK":100,
+  "mana":50,
+  "stamina":null,
+  "card_id":[84,85,86,87]
+  },
+   "2":{
+  "id":18,
+  "name":"血液",
+  "star":4,
+  "HP":2500,
+  "ATK":1000,
+  "mana":50,
+  "stamina":null,
+  "card_id":[84,85,86,87]
+   },
+   "3":{
+  "id":19,
+  "name":"巨大的淫秽物",
+  "star":5,
+  "HP":10000,
+  "ATK":5000,
+  "mana":50,
+  "stamina":200,
+  "card_id":[84,85,86,87]
+   }
+},
+
+    "兽人泛血的巨斧.png": {
+    "id": 72,
+    "name": "兽人泛血的巨斧",
+    "effect": "造成 500 点伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 5,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "兽人嗜血的嘴唇.png": {
+    "id": 73,
+    "name": "兽人嗜血的嘴唇",
+    "effect": "恢复 100 点生命",
+    "category": "永续",
+    "mana": null,
+    "stamina": 3,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "兽人战锤迎击.png": {
+    "id": 74,
+    "name": "兽人战锤迎击",
+    "effect": "抵抗 1000 点伤害",
+    "category": "永续",
+    "mana": null,
+    "stamina": 10,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "兽人的聚集.png": {
+    "id": 75,
+    "name": "兽人的聚集",
+    "effect": "增加两个怪兽槽，并召唤两个怪兽",
+    "category": "仪式",
+    "mana": 10,
+    "stamina": null,
+    "number": 5,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "燃起生命之火.png": {
+    "id": 76,
+    "name": "燃起生命之火",
+    "effect": "恢复 500 点生命",
+    "category": "仪式",
+    "mana": 5,
+    "stamina": null,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "魔王的巨砸.png": {
+    "id": 77,
+    "name": "魔王的巨砸",
+    "effect": "造成 2000 点伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 20,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "全身上甲.png": {
+    "id": 78,
+    "name": "全身上甲",
+    "effect": "默认每回合抵抗 500 点伤害",
+    "category": "装备",
+    "mana": null,
+    "stamina": 5,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "对峙.png": {
+    "id": 79,
+    "name": "对峙",
+    "effect": "当前回合下消除伤害小于 300 的伤害",
+    "category": "场地",
+    "mana": null,
+    "stamina": 8,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":true
+  },
+  "骷髅的挥棒.png": {
+    "id": 80,
+    "name": "骷髅的挥棒",
+    "effect": "造成 100 点伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 1,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "骷髅的抵抗.png": {
+    "id": 81,
+    "name": "骷髅的抵抗",
+    "effect": "抵抗 50 点伤害",
+    "category": "永续",
+    "mana": null,
+    "stamina": 0,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "骷髅的冷静.png": {
+    "id": 82,
+    "name": "骷髅的冷静",
+    "effect": "恢复 50 点生命",
+    "category": "永续",
+    "mana": null,
+    "stamina": 1,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "亡灵之夜.png": {
+    "id": 83,
+    "name": "亡灵之夜",
+    "effect": "恢复场地上的所有怪兽",
+    "category": "场地",
+    "mana": 33,
+    "stamina": null,
+    "number": 5,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "巨物的吞噬.png": {
+    "id": 84,
+    "name": "巨物的吞噬",
+    "effect": "造成 5000 点伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 17,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "巨物的咆哮.png": {
+    "id": 85,
+    "name": "巨物的咆哮",
+    "effect": "抵抗 2000 点伤害",
+    "category": "速攻",
+    "mana": null,
+    "stamina": 13,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "巨物的饮水.png": {
+    "id": 86,
+    "name": "巨物的饮水",
+    "effect": "恢复 500 点生命",
+    "category": "永续",
+    "mana": null,
+    "stamina": 1,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":false
+  },
+  "突变武装.png": {
+    "id": 87,
+    "name": "突变武装",
+    "effect": "默认每回合造成 500 伤害，抵抗 500 点伤害，恢复 500 点生命值",
+    "category": "装备",
+    "mana": null,
+    "stamina": 25,
+    "number": 10,
+    "Noble-Phantasm":false,
+    "all-round":true
+   }
+ }
+}

@@ -1,0 +1,28 @@
+package login;
+
+enum main {
+    login = 2;
+}
+
+enum sub {
+    // 只改这4个枚举值！
+    CMD_LOGIN_REQ = 1;
+    CMD_LOGIN_RES = 2;
+    CMD_HEART_REQ = 3;
+    CMD_HEART_RES = 4;
+}
+
+// 下面的 message LoginReq 完全不用改！
+message LoginReq {
+    optional string token = 1;
+    optional int64 player_id = 2;
+}
+message LoginRes {
+    optional int32 isreconnect = 1;
+}
+message HeartReq {
+    optional int64 time = 1;
+}
+message HeartRes {
+    optional int64 time = 2;
+}

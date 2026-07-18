@@ -1,0 +1,15 @@
+package cardserver_character;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	cardserver_character = 401;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_PlayerCharNotice  = 80;
+}
+
+message PlayerCharNotice{
+	optional int64 player_id = 1;
+	repeated int64 char_id = 2; 
+}

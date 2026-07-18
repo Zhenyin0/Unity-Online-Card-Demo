@@ -1,0 +1,2256 @@
+{
+    "FGO-card-Roundrecord":{
+        "ROOM_STATUS":{
+                "room_status_1":{
+                "room_id":100001,
+                "room_type":1,
+                "room_type_name":"普通对决局",
+                "status":"空闲",
+                "laster_make_time": null,
+                "palyer_id_1":null,
+                "palyer_id_2":null,
+                "required":{
+                    "bag-item-id":10000007,
+                    "bag-item-count":10,
+                    "mana":20,
+                    "stamina":50
+                }
+            },
+            "room_status_2":{
+                "room_id":100002,
+                "room_type":2,
+                "room_type_name":"终极对决局",
+                "status":"等待",
+                "laster_make_time": 1775912891,
+                "palyer_id_1":1000100010001119,
+                "palyer_id_2":null,
+                "required":{
+                    "bag-item-id":10000007,
+                    "bag-item-count":100,
+                    "mana":20,
+                    "stamina":50
+                }
+            },
+            "room_status_3":{
+                "room_id":100003,
+                "room_type":3,
+                "room_type_name":"高端对决局",
+                "status":"已满",
+                "laster_make_time": 1775912891,
+                "palyer_id_1":1000100010001119,
+                "palyer_id_2":1000100010001120,
+                "required":{
+                    "bag-item-id":10000008,
+                    "bag-item-count":5,
+                    "mana":20,
+                    "stamina":50
+                }
+            },
+            "room_status_0":{
+                "room_id":100004,
+                "room_type":0,
+                "room_type_name":"副本战斗局",
+                "status":"已满",
+                "laster_make_time": 1775912891,
+                "palyer_id_1":1000100010001119,
+                "palyer_id_2":1999900010000005,
+                "required":{
+                    "mana":20,
+                    "stamina":50
+                }
+            }
+            
+        },
+        "ROOM_READY": {
+            "ROOM_TYPE_1":{
+                "type_id":1001,
+                "room_id":100001,
+                "room_type":1,
+                "room_type_name":"普通对决局",
+
+                "palyer_1":{
+                    "palyer_id":1000100010001119,
+                    "palyer_name":"AAANB123",
+                    "enter":true,
+                    "card-number":20,
+                    "char-number":2,
+                    "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":10,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":14,
+                            "card-count":7
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1
+                        }
+
+                    ],
+                    "char":[
+                        {
+                            "char_id":1,
+                            "char_carry_card_id":
+                            [1,4,5,6,7,8,9,10],
+                            "char_carry_card_number": 10
+                        },
+                        {
+                            "char_id":2,
+                            "char_carry_card_id":
+                            [14,15,17,20],
+                            "char_carry_card_number": 10
+                        }
+                    ]
+
+                },
+                "palyer_2":{
+                    "palyer_id":1000100010001120,
+                    "palyer_name":"AANNB123",
+                    "enter":true,
+                    "card-number":20,
+                    "char-number":2,
+                    "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":11,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":14,
+                            "card-count":7
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1
+                        }
+                    ],
+                    "char":[
+                        {
+                            "char_id":1,
+                            "char_carry_card_id":
+                            [1,4,5,6,7,8,9,11],
+                            "char_carry_card_number": 10
+                        },
+                        {
+                            "char_id":2,
+                            "char_carry_card_id":
+                            [14,15,17,20],
+                            "char_carry_card_number": 10
+                        }
+                    ]
+                }
+            },
+            "ROOM_TYPE_2":{
+                "type_id":1002,
+                "room_id":100002,
+                "room_type":2,
+                "room_type_name":"终极对决局",
+
+                "palyer_1":{
+                    "palyer_id":1000100010001119,
+                    "palyer_name":"AAANB123",
+                    "enter":true,
+                    "card-number":40,
+                    "char-number":4,
+                    "card":[
+                        
+                        {},
+                        {},
+                        {}
+                    ],
+                    "char":[
+                        {},
+                        {},
+                        {},
+                        {}
+                    ]
+
+                },
+                "palyer_2":{
+                    "palyer_id":1000100010001120,
+                    "palyer_name":"AANNB123",
+                    "enter":true,
+                    "card-number":40,
+                    "char-number":4,
+                    "card":[
+                        {},
+                        {},
+                        {}
+                    ],
+                    "char":[
+                        {},
+                        {},
+                        {},
+                        {}
+                    ]
+                }
+            },
+            "ROOM_TYPE_3":{
+                "type_id":1003,
+                "room_id":100003,
+                "room_type":3,
+                "room_type_name":"高端对决局",
+
+                "palyer_1":{
+                    "palyer_id":1000100010001119,
+                    "palyer_name":"AAANB123",
+                    "enter":true,
+                    "card-number":60,
+                    "char-number":5,
+                    "card":[
+                        
+                        {},
+                        {},
+                        {}
+                    ],
+                    "char":[
+                        {},
+                        {},
+                        {},
+                        {},
+                        {}
+                    ]
+
+                },
+                "palyer_2":{
+                    "palyer_id":1000100010001120,
+                    "palyer_name":"AANNB123",
+                    "enter":true,
+                    "card-number":60,
+                    "char-number":5,
+                    "card":[
+                        {},
+                        {},
+                        {}
+                    ],
+                    "char":[
+                        {},
+                        {},
+                        {},
+                        {},
+                        {}
+                    ]
+                }
+            },
+            "ROOM_TYPE_0":{
+                "type_id":1000,
+                "room_id":100004,
+                "room_type":0,
+                
+
+                "palyer_1":{
+                    "palyer_id":1000100010001119,
+                    "palyer_name":"AAANB123",
+                    "enter":true,
+                    "card-number":20,
+                    "char-number":2,
+                    "card":[
+                        
+                        {
+                            "card-id":1,
+                            "card-count":3
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":10,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":14,
+                            "card-count":7
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1
+                        }
+
+                    ],
+                    "char":[
+                         {
+                            "char_id":1,
+                            "char_carry_card_id":
+                            [1,4,5,6,7,8,9,10],
+                            "char_carry_card_number": 10
+                        },
+                        {
+                            "char_id":2,
+                            "char_carry_card_id":
+                            [14,15,17,20],
+                            "char_carry_card_number": 10
+                        }
+                    ]
+
+                },
+                "palyer_2":{
+                    "palyer_id":1999900010000005,
+                    "palyer_name":"robot_2_1",
+                    "enter":true,
+                    "card-number":20,
+                    "char-number":2,
+                    "card":[
+                        {
+                            "card_id":80,
+                            "card_count":10
+                        },
+                        {
+                            "card_id":81,
+                            "card_count":10
+                        }
+                    ],
+                    "char":[
+                        {
+                            "char_id":8,
+                            "char_carry_card_id":
+                            [80],
+                            "char_carry_card_number": 10
+                        },
+                        {
+                            "char_id":9,
+                            "char_carry_card_id":
+                            [81],
+                            "char_carry_card_number": 10
+                        }
+                    ]
+                }
+            }
+           
+        },
+        "GAME_START":{
+            "player-1_round":{  
+                "player_id":1000100010001119,
+                "palyer_name":"AAANB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "start":true,
+                "game-if-End":false,
+                "start-to-now_time":0,
+
+                "ROUND_START-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":0,
+                    "round_type_number":1,  
+                    "round_type_name":"回合开始后",
+                    "round_limite_time":10,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":500,
+                        "ATK":50,
+                        "mana":10,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":10,
+                            "card-count":1,
+                                "name": "黑键迎击",
+                                "effect": "无视对方防御造成 300 伤害",
+                                "category": "速攻",
+                                "mana": null,
+                                "stamina": 6,
+                                "Noble-Phantasm":false,
+                                "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":5
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":null
+                },
+
+                "WAIT_ACTION-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":1,
+                    "round_type_number":2,
+                    "round_type_name":"等待操作后",
+                    "round_limite_time":60,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":500,
+                        "ATK":50,
+                        "mana":1,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":0,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":10,
+                            "card-count":1,
+                                "name": "黑键迎击",
+                                "effect": "无视对方防御造成 300 伤害",
+                                "category": "速攻",
+                                "mana": null,
+                                "stamina": 6,
+                                "Noble-Phantasm":false,
+                                "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":5
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":{}
+                },
+                "ACTION_EXECUTE-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":1,
+                    "round_type_number":3,
+                    "round_type_name":"操作结束后",
+                    "round_limite_time":10,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":500,
+                        "ATK":50,
+                        "mana":10,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":0,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":10,
+                            "card-count":1,
+                                "name": "黑键迎击",
+                                "effect": "无视对方防御造成 300 伤害",
+                                "category": "速攻",
+                                "mana": null,
+                                "stamina": 6,
+                                "Noble-Phantasm":false,
+                                "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":5
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":{}
+                },
+                "ROUND_END-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":1,
+                    "round_type_number":4,
+                    "round_type_name":"回合结束后",
+                    "round_limite_time":10,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":500,
+                        "ATK":50,
+                        "mana":10,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":10,
+                            "card-count":1,
+                                "name": "黑键迎击",
+                                "effect": "无视对方防御造成 300 伤害",
+                                "category": "速攻",
+                                "mana": null,
+                                "stamina": 6,
+                                "Noble-Phantasm":false,
+                                "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 7,
+                        "carry_now_card_number":7
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":{}
+                }
+
+            },
+            "player-2_round":{
+                "player_id":1000100010001120,
+                "palyer_name":"AANNB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "start":true,
+                "game-if-End":false,
+                "start-to-now_time":90,
+
+                "ROUND_START-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":0,
+                    "round_type_number":5,
+                    "round_type_name":"回合开始后",
+                    "round_limite_time":10,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":50,
+                        "ATK":50,
+                        "mana":10,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":11,
+                            "card-count":1,
+                            "name": "黑键蓄力",
+                            "effect": "受到伤害反伤对方 200",
+                            "category":"反击",
+                            "mana": null,
+                            "stamina": 6,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":5
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":null
+                },
+
+                "WAIT_ACTION-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":1,
+                    "round_type_number":6,
+                    "round_type_name":"等待操作后",
+                    "round_limite_time":60,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":50,
+                        "ATK":50,
+                        "mana":10,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":11,
+                            "card-count":1,
+                            "name": "黑键蓄力",
+                            "effect": "受到伤害反伤对方 200",
+                            "category":"反击",
+                            "mana": null,
+                            "stamina": 6,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":5
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":{}
+                },
+
+
+                "ACTION_EXECUTE-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":1,
+                    "round_type_number":7,
+                    "round_type_name":"结束操作后",
+                    "round_limite_time":10,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":50,
+                        "ATK":50,
+                        "mana":10,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":11,
+                            "card-count":1,
+                            "name": "黑键蓄力",
+                            "effect": "受到伤害反伤对方 200",
+                            "category":"反击",
+                            "mana": null,
+                            "stamina": 6,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":5
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":{}
+                },
+
+
+                "ROUND_END-after":{
+                    "self_all_card":20,
+                    "other_all_card":20,
+                    "round":1,
+                    "_comment":"round_type_number不超过8, 在1~8之间轮转记录状态",
+                    "round_type_number":8,
+                    "round_type_name":"回合结束后",
+                    "round_limite_time":10,
+                    "self_character":{
+                      "Sequence-of-sessions":1,
+                      "self-stamina":50,
+                      "self_master":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "star":5,
+                        "HP":50,
+                        "ATK":50,
+                        "mana":10,
+                        "position":1,
+                        "char_carry_card_id":[1,2,3,4,5,6,7,8,9,10],
+                        "card":[
+                        {
+                            "card-id":1,
+                            "card-count":3,
+                            "name": "炽天使咒印",
+                            "effect": "造成150伤害",
+                            "category": "仪式",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":4,
+                            "card-count":1,
+                            "name": "宝石剑泽尔里奇",
+                            "effect": "造成300点伤害",
+                            "category": "反击",
+                            "mana": 3,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":5,
+                            "card-count":1,
+                            "name": "凛的吊坠",
+                            "effect": "抵抗致命伤害.存续50",
+                            "category": "装备",
+                            "mana": 0,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":true
+                        },
+                        {
+                            "card-id":6,
+                            "card-count":1,
+                            "name": "红宝石ruby",
+                            "effect": "增幅伤害100点",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":7,
+                            "card-count":1,
+                            "name": "蓝宝石sapphire",
+                            "effect": "降低受伤150",
+                            "category": "装备",
+                            "mana": 1,
+                            "stamina": null,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":8,
+                            "card-count":1,
+                            "name": "炽天覆七重圆环",
+                            "effect": "抵抗受伤 500",
+                            "category": "仪式",
+                            "mana": 5,
+                            "stamina": null,
+                            "Noble-Phantasm":true,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":9,
+                            "card-count":1,
+                            "name": "中心竞争者",
+                            "effect": "破坏敌方装备，并造成 100 伤害",
+                            "category": "速攻",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":11,
+                            "card-count":1,
+                            "name": "黑键蓄力",
+                            "effect": "受到伤害反伤对方 200",
+                            "category":"反击",
+                            "mana": null,
+                            "stamina": 6,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":5
+                      },
+                      "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "star":3,
+                        "HP":500,
+                        "ATK":200,
+                        "mana":10,
+                        "position":2,
+                        "char_carry_card_id":[14,15,17,20],
+                        "card":[
+                        {
+                            "card-id":14,
+                            "card-count":7,
+                            "name": "冷酷持枪",
+                            "effect": "造成 150 点伤害",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":15,
+                            "card-count":1,
+                            "name": "麻木世界的觉悟",
+                            "effect": "抵抗 300 点伤害",
+                            "category": "永续",
+                            "mana": null,
+                            "stamina": 3,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":17,
+                            "card-count":1,
+                            "name": "命运转折的警示",
+                            "effect": "默认抵抗 100 伤害",
+                            "category": "装备",
+                            "mana": null,
+                            "stamina": 1,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        },
+                        {
+                            "card-id":20,
+                            "card-count":1,
+                            "name": "有所举措的行为",
+                            "effect": "造成 50 伤害，回复 100 血，抵抗伤害 50",
+                            "category": "通常",
+                            "mana": null,
+                            "stamina": 2,
+                            "Noble-Phantasm":false,
+                            "all-round":false
+                        }
+                    ],
+                        "char_carry_card_number": 10,
+                        "carry_now_card_number":10
+                      }  
+                    },
+                    "special-ability":{}
+                }
+            }
+            
+        },
+        "GAME_OVER":{
+            "player-1-status":{
+                "player_id":1000100010001119,
+                "palyer_name":"AAANB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "room-status":"空闲",
+                "start":false,
+                "game-if-End":true,
+                "start-to-now_time":480,
+                "round-count":4,
+                "laster_make_time": 1775912891,
+                "used-mana":40,
+                "self-used-card":12,
+                "other-used-card":0,
+                "self_character-record":{
+                    "Sequence-of-sessions":2,
+                    "self_master-record":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "HP":500,
+                        "position":1,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":1,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":4,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":5,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":6,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":7,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":8,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":9,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":10,
+                                "card-count":1
+                            }
+                            
+                        ]
+
+                    },
+                    "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "HP":500,
+                        "position":2,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":14,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":15,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":17,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":20,
+                                "card-count":1
+                            }
+                            
+                        ]
+                    }
+                },
+                "self_status":{
+                    "game_status":"win",
+                    "bag_item_id":10000007,
+                    "Resource Settlement":20,
+                    "game_over_reason":"对局方全败"
+
+                }
+            },
+            "palyer-2-status":{
+                "player_id":1000100010001120,
+                "palyer_name":"AANNB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "room-status":"空闲",
+                "start":false,
+                "game-if-End":true,
+                "start-to-now_time":480,
+                "round-count":4,
+                "laster_make_time": 1775912891,
+                "used-mana":0,
+                "self-used-card":0,
+                "other-used-card":12,
+                "self_character-record":{
+                    "Sequence-of-sessions":2,
+                    "self_master-record":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "HP":0,
+                        "position":1,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":1,
+                                "card-count":3
+                            },
+                            {
+                                "card-id":4,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":5,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":6,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":7,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":8,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":9,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":11,
+                                "card-count":1
+                            }
+                            
+                        ]
+
+                    },
+                    "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "HP":0,
+                        "position":2,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":14,
+                                "card-count":7
+                            },
+                            {
+                                "card-id":15,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":17,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":20,
+                                "card-count":1
+                            }
+                            
+                        ]
+                    }
+                },
+                "self_status":{
+                    "game_status":"loss",
+                    "bag_item_id":10000007,
+                    "Resource Settlement":0,
+                    "game_over_reason":"我方全败"
+
+                }
+            }
+
+        }
+    },
+
+
+
+
+
+    "FGO-card-Statusrecord":{
+        "roughly-status-record":{
+            "player-1-record":{
+                "player_id":1000100010001119,
+                "palyer_name":"AAANB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "round-count":4,
+                "laster_make_time": 1775912891,
+                "self_status":{
+                    "game_status":"win",
+                    "bag_item_id":10000007,
+                    "Resource Settlement":20,
+                    "game_over_reason":"对局方全败"
+
+                }
+                
+
+            },
+            "player-2-record":{
+                "player_id":1000100010001120,
+                "palyer_name":"AANNB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "round-count":4,
+                "laster_make_time": 1775912891,
+                "self_status":{
+                    "game_status":"loss",
+                    "bag_item_id":10000007,
+                    "Resource Settlement":0,
+                    "game_over_reason":"我方全败"
+
+                }
+            }
+        },
+        "detail-status-record":{
+            "player-1-record":{
+                "player_id":1000100010001119,
+                "palyer_name":"AAANB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "start-to-now_time":480,
+                "round-count":4,
+                "laster_make_time": 1775912891,
+                "used-mana":40,
+                "self-used-card":12,
+                "other-used-card":0,
+                "self_character-record":{
+                    "Sequence-of-sessions":2,
+                    "self_master-record":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "HP":500,
+                        "position":1,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":1,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":4,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":5,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":6,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":7,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":8,
+                                "card-count":0
+                            },
+                            {
+                                "card-id":9,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":10,
+                                "card-count":1
+                            }
+                            
+                        ]
+
+                    },
+                    "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "HP":500,
+                        "position":2,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":14,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":15,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":17,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":20,
+                                "card-count":1
+                            }
+                            
+                        ]
+                    }
+                },
+                "self_status":{
+                    "game_status":"win",
+                    "bag_item_id":10000007,
+                    "Resource Settlement":20,
+                    "game_over_reason":"对局方全败"
+
+                }
+            },
+            "player-2-record":{
+                "player_id":1000100010001120,
+                "palyer_name":"AANNB123",
+                "room_id":100001,
+                "room_type":1,
+                "room_name":"普通对决局100001",
+                "start-to-now_time":480,
+                "round-count":4,
+                "laster_make_time": 1775912891,
+                "used-mana":0,
+                "self-used-card":0,
+                "other-used-card":12,
+                "self_character-record":{
+                    "Sequence-of-sessions":2,
+                    "self_master-record":{
+                        "id":1,
+                        "name":"咕哒子",
+                        "HP":0,
+                        "position":1,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":1,
+                                "card-count":3
+                            },
+                            {
+                                "card-id":4,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":5,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":6,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":7,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":8,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":9,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":11,
+                                "card-count":1
+                            }
+                            
+                        ]
+
+                    },
+                    "self_XiGeMa":{
+                        "id":2,
+                        "name":"西格玛",
+                        "HP":0,
+                        "position":2,
+                        "char_carry_card_record":[
+                            {
+                                "card-id":14,
+                                "card-count":7
+                            },
+                            {
+                                "card-id":15,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":17,
+                                "card-count":1
+                            },
+                            {
+                                "card-id":20,
+                                "card-count":1
+                            }
+                            
+                        ]
+                    }
+                },
+                "self_status":{
+                    "game_status":"loss",
+                    "bag_item_id":10000007,
+                    "Resource Settlement":0,
+                    "game_over_reason":"我方全败"
+
+                }
+            }
+        }
+    }
+    
+}
+

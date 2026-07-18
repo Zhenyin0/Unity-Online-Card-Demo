@@ -1,0 +1,515 @@
+{
+  "ManaCount": 110,
+  "BagItemCount": {
+    "BagItem-1": 930,
+    "BagItem-2": 35,
+    "BagItem-3": 12,
+    "BagItem-4": 5,
+    "BagItem-5": 12,
+    "BagItem-6": 30,
+    "BagItem-7": 0,
+    "BagItem-8": 0,
+    "BagItem-9": 0,
+    "BagItem-10": 0,
+    "BagItem-11": 0,
+    "BagItem-12": 0
+  },
+  "MapResource": {
+    "Map1": {
+      "other-Map-jump": true,
+      "build-number": [],
+      "region-1": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": true,
+        "allow-building": true,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      },
+      "region-2": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": true,
+        "allow-building": true,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      },
+      "region-3": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": true,
+        "allow-building": true,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      },
+      "region-4": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": true,
+        "allow-building": true,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      },
+      "region-5": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": true,
+        "allow-building": true,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      },
+      "region-6": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": true,
+        "allow-building": true,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      },
+      "region-7": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      },
+      "region-8": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 1,
+          "count": 5
+        }
+      }
+    },
+    "Map2": {
+      "other-Map-jump": true,
+      "build-number": [],
+      "region-9": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": true,
+        "allow-building": true,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-10": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-11": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-12": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-13": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-14": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-15": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-16": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-17": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      },
+      "region-18": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 2,
+          "count": 5
+        }
+      }
+    },
+    "Map3": {
+      "other-Map-jump": false,
+      "build-number": [],
+      "region-19": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-20": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-21": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-22": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-23": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-24": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-25": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-26": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-27": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-28": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      },
+      "region-29": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 3,
+          "count": 5
+        }
+      }
+    },
+    "Map4": {
+      "other-Map-jump": false,
+      "build-number": [],
+      "region-30": {
+        "allow-pick": true,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-31": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-32": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-33": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-34": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-35": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-36": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-37": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-38": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-39": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      },
+      "region-40": {
+        "allow-pick": false,
+        "enter-restrict-mana": 20,
+        "is-win": false,
+        "allow-building": false,
+        "build-ID": null,
+        "build-position": [],
+        "reward-item": {
+          "ID": 4,
+          "count": 5
+        }
+      }
+    }
+  }
+}

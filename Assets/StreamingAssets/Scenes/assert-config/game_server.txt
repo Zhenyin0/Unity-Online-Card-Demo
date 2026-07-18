@@ -1,0 +1,644 @@
+﻿hall_server/main.py
+
+import sys, os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, BASE_DIR)
+
+import asyncio
+import websockets
+import aiomysql
+import time
+# import uuid
+from common.utils.logger import print_with_time
+from common.utils.packet import parse_packet, make_packet
+from common.utils.email_packet import sync_email_config
+from common.utils.redis_helper import init_redis_pool
+from handlers.hall_handles import *
+from importlib import import_module
+import configparser
+
+# 读取配置
+config = configparser.ConfigParser()
+config.read(os.path.join(BASE_DIR, "config/global.ini"), encoding="utf-8")
+db_config = configparser.ConfigParser()
+db_config.read(os.path.join(BASE_DIR, "config/db.ini"), encoding="utf-8")
+
+# print_with_time(f"读取到的配置节：{db_config.sections()}")
+# print_with_time(f"配置文件路径：{os.path.join(BASE_DIR, 'config/db.ini')}")
+
+# MySQL配置
+MYSQL_CONFIG = {
+    "host": db_config.get("mysql","host"),
+    "port": int(db_config.get("mysql","port")),
+    "user": db_config.get("mysql","user"),
+    "password": db_config.get("mysql","password"),
+    "db": db_config.get("mysql","db_hall"),
+    "charset": db_config.get("mysql","charset"),
+    "autocommit": True
+}
+BATTLE_DB_CONFIG = {**MYSQL_CONFIG, "db": db_config.get("mysql","db_battle")}
+
+# 全局变量
+HALL_POOL = None
+BATTLE_POOL = None
+LOGIN_INNER_HOST = config.get("login","ws_host")
+LOGIN_INNER_PORT = int(config.get("login","ws_port"))
+SERVER_HOST = config.get("hall","ws_host")
+SERVER_PORT = int(config.get("hall","ws_port"))
+
+# 动态导入proto
+import_module("common.protos.common.common_pb2")
+login_pb = import_module("common.protos.common.2_login_pb2")
+player_pb = import_module("common.protos.hallserver.101_hallserver_player_pb2")
+item_pb = import_module("common.protos.hallserver.102_hallserver_item_pb2")
+map_hall_pb = import_module("common.protos.hallserver.105_hallserver_map_pb2")
+extral_pb = import_module("common.protos.hallserver.107_hallserver_extral_pb2")
+friend_pb = import_module("common.protos.hallserver.104_hallserver_friend_pb2")
+match_pb = import_module("common.protos.hallserver.103_hallserver_match_pb2")
+try: email_pb = import_module("common.protos.hallserver.106_hallserver_email_pb2")
+except: email_pb = None
+
+# ===================== 原有验证函数完全保留 =====================
+async def internal_verify(token: str, player_id: int):
+    try:
+        async with websockets.connect(f"ws://{LOGIN_INNER_HOST}:{LOGIN_INNER_PORT}") as ws:
+            req = login_pb.LoginReq()
+            req.token = token; req.player_id = player_id
+            data = make_packet(201, req.SerializeToString())
+            await ws.send(data)
+            return await ws.recv() == b"OK"
+    except: return False
+
+# ===================== 连接处理逻辑：新增PVP匹配协议处理 =====================
+async def handle_hall(websocket):
+    buf = b""; player_id = None
+    try:
+        async for msg in websocket:
+            buf += msg
+            while True:
+                packid, body, pkt_len = parse_packet(buf)
+                if not packid: break
+                buf = buf[2+pkt_len:]
+
+                # 登录验证
+                if packid == 201:
+                    req = login_pb.LoginReq()
+                    req.ParseFromString(body)
+                    ok = await internal_verify(req.token, req.player_id)
+                    if not ok: await websocket.close(); return
+                    player_id = req.player_id
+                    try:
+                        async with HALL_POOL.acquire() as conn:
+                            async with conn.cursor() as cur:
+                                await cur.execute("UPDATE player SET last_login_time=%s WHERE player_id=%s", (int(time.time()), player_id))
+                    except: pass
+
+                    if player_id not in ONLINE_PLAYERS:
+                        ONLINE_PLAYERS.add(player_id)
+                        # 保存玩家WS连接
+                        if player_id not in PLAYER_WS_MAP:
+                            PLAYER_WS_MAP[player_id] = []
+                        PLAYER_WS_MAP[player_id].append(websocket)
+                        print_with_time(f"玩家进入大厅：{player_id}")
+                        if await is_new_player(player_id, HALL_POOL):
+                            await init_new_player_item(player_id, HALL_POOL)
+                            await send_welcome_email(player_id, HALL_POOL)
+                    await send_player_info(websocket, player_id, HALL_POOL)
+                    await send_item_list(websocket, player_id, HALL_POOL)
+                    await send_email_list(websocket, player_id, HALL_POOL)
+                    await send_online_players(websocket)
+
+                # 心跳处理
+                elif packid == 203:
+                    h_rsp = login_pb.HeartRes()
+                    h_rsp.time = int(asyncio.get_event_loop().time())
+                    await websocket.send(make_packet(203, h_rsp.SerializeToString()))
+
+                # 获取道具列表 10201
+                elif packid == 10201:
+                    req = item_pb.ReqLatestItem()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_req_latest_item(req.player_id, HALL_POOL))
+
+                # 获取信件列表 10607
+                elif packid == 10607:
+                    req = email_pb.ReqLatestMail()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_req_latest_mail(req.player_id, HALL_POOL))
+
+                # 修改玩家名称 10101
+                elif packid == 10101:
+                    req = player_pb.ReqChangeNickName()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_change_nickname(player_id, req.nickname, HALL_POOL, websocket))
+
+                # 签收全部信件 10601
+                elif packid == 10601:
+                    req = email_pb.ReadEmailReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_read_email(player_id, req.guid_list, HALL_POOL, websocket))
+
+                # 进入场景地图 10501
+                elif packid == 10501:
+                    req = map_hall_pb.ToEnterMapReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_enter_map(req.player_id, HALL_POOL))
+
+                # 进入对局房间 10701
+                elif packid == 10701:
+                    req = extral_pb.ToReleaseExtralHallReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_enter_extral(req.player_id))
+
+                # 对局房间结束回到大厅 10703
+                elif packid == 10703:
+                    req = extral_pb.ExtralHallBackHallReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_extral_back_hall(req.player_id))
+
+                # 查看好友 10411
+                elif packid == 10411:
+                    req = friend_pb.ReqLatestFriendNotic()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_req_latest_friend(req.player_id, HALL_POOL))
+
+                # 查看玩家地图 10503
+                elif packid == 10503:
+                    req = map_hall_pb.GetOtherPlayMapSignReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_get_other_player_map(req.player_id, HALL_POOL))
+
+                # 【新增】申请匹配游戏 10301
+                elif packid == 10301:
+                    req = match_pb.MatchGameReq()
+                    req.ParseFromString(body)
+                    rsp_packet, _ = await handle_match_game_req(req.player_id, req.room_type, HALL_POOL)
+                    await websocket.send(rsp_packet)
+
+                # 【新增】取消匹配游戏 10303
+                elif packid == 10303:
+                    req = match_pb.CancelMatchGameReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_cancel_match_game_req(req.player_id, req.room_type))
+
+                # 【新增】发送对决邀请 10305
+                elif packid == 10305:
+                    req = match_pb.AcceptMatchReq()
+                    req.ParseFromString(body)
+                    rsp_packet, _ = await handle_send_challenge_req(player_id, req.player_id, req.room_type, HALL_POOL)
+                    await websocket.send(rsp_packet)
+
+                # 【新增】接受对决邀请 10307
+                elif packid == 10307:
+                    req = match_pb.AcceptMatchNoticRes()
+                    req.ParseFromString(body)
+                    await handle_accept_challenge_req(req.player_id, player_id, True, BATTLE_POOL)
+
+                # 【新增】拒绝对决邀请 10308
+                elif packid == 10308:
+                    req = match_pb.RefuseMatchNoticRes()
+                    req.ParseFromString(body)
+                    await handle_accept_challenge_req(req.player_id, player_id, False, BATTLE_POOL)
+
+    except Exception as e:
+        print_with_time(f"hall异常：{e}")
+    finally:
+        # 玩家下线清理WS连接
+        if player_id in ONLINE_PLAYERS:
+            ONLINE_PLAYERS.discard(player_id)
+            # 清理WS连接
+            if player_id in PLAYER_WS_MAP:
+                if websocket in PLAYER_WS_MAP[player_id]:
+                    PLAYER_WS_MAP[player_id].remove(websocket)
+                if not PLAYER_WS_MAP[player_id]:
+                    del PLAYER_WS_MAP[player_id]
+            print_with_time(f"玩家退出大厅：{player_id}")
+            try:
+                async with HALL_POOL.acquire() as conn:
+                    async with conn.cursor() as cur:
+                        await cur.execute("UPDATE player SET last_logout_time=%s WHERE player_id=%s", (int(time.time()), player_id))
+            except: pass
+
+# ===================== 服务主入口 =====================
+async def main():
+    global HALL_POOL, BATTLE_POOL
+    HALL_POOL = await aiomysql.create_pool(**MYSQL_CONFIG)
+    BATTLE_POOL = await aiomysql.create_pool(**BATTLE_DB_CONFIG)
+    # 初始化Redis连接池
+    await init_redis_pool()
+    try: await sync_email_config(HALL_POOL); print_with_time("✅ 邮件配置同步完成")
+    except Exception as e: print_with_time(f"⚠️ 邮件配置同步失败：{e}")
+    asyncio.create_task(print_online_periodically())
+    asyncio.create_task(magic_recover_task(HALL_POOL))
+    # 【新增】启动PVP匹配调度器
+    asyncio.create_task(pvp_match_scheduler_task(BATTLE_POOL, HALL_POOL))
+    async with websockets.serve(handle_hall, SERVER_HOST, SERVER_PORT):
+        print_with_time(f"✅ hall_server 启动成功 {SERVER_HOST}:{SERVER_PORT}")
+        await asyncio.Future()
+
+if __name__ == "__main__":
+    if sys.platform == "win32":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
+    
+    
+    
+    
+    
+map_server/main.py    
+
+import sys, os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, BASE_DIR)
+import asyncio
+import websockets
+import aiomysql
+import time
+import configparser
+from common.utils.logger import print_with_time
+from common.utils.packet import parse_packet, make_packet
+from common.utils.redis_helper import init_redis_pool
+from handlers.map_handlers import *
+from importlib import import_module
+
+# 读取配置
+config = configparser.ConfigParser()
+config.read(os.path.join(BASE_DIR, "config/global.ini"), encoding="utf-8")
+db_config = configparser.ConfigParser()
+db_config.read(os.path.join(BASE_DIR, "config/db.ini"), encoding="utf-8")
+
+# MySQL配置
+MYSQL_CONFIG = {
+    "host": db_config.get("mysql","host"),
+    "port": int(db_config.get("mysql","port")),
+    "user": db_config.get("mysql","user"),
+    "password": db_config.get("mysql","password"),
+    "db": db_config.get("mysql","db_map"),
+    "charset": db_config.get("mysql","charset"),
+    "autocommit": True
+}
+
+# 全局变量
+MAP_POOL = None
+LOGIN_HOST = config.get("login","ws_host")
+LOGIN_PORT = int(config.get("login","ws_port"))
+# 对外服务端口
+SERVER_HOST = config.get("map","ws_host")
+SERVER_PORT = int(config.get("map","ws_port"))
+# 内部RPC服务端口（仅本地访问）
+INNER_HOST = config.get("map","inner_ws_host")
+INNER_PORT = int(config.get("map","inner_ws_port"))
+
+# 动态导入proto
+import_module("common.protos.common.common_pb2")
+login_pb = import_module("common.protos.common.2_login_pb2")
+back_hall_pb = import_module("common.protos.mapserver.206_mapserver_hall_pb2")
+region_pb = import_module("common.protos.mapserver.202_mapserver_region_pb2")
+build_pb = import_module("common.protos.mapserver.203_mapserver_build_pb2")
+match_pb = import_module("common.protos.mapserver.204_mapserver_match_pb2")
+other_map_pb = import_module("common.protos.mapserver.205_mapserver_other_pb2")
+item_pb = import_module("common.protos.hallserver.102_hallserver_item_pb2")
+
+# ===================== 原有验证函数完全保留 =====================
+async def verify(token, player_id):
+    try:
+        async with websockets.connect(f"ws://{LOGIN_HOST}:{LOGIN_PORT}") as ws:
+            req = login_pb.LoginReq()
+            req.token = token
+            req.player_id = player_id
+            await ws.send(make_packet(201, req.SerializeToString()))
+            return await ws.recv() == b"OK"
+    except:
+        return False
+
+# ===================== 原有对外WS连接处理逻辑完全保留 =====================
+async def handle_map(websocket):
+    buf = b""
+    player_id = None
+    target_player_id = None
+    try:
+        async for msg in websocket:
+            buf += msg
+            while True:
+                packid, body, pkt_len = parse_packet(buf)
+                if not packid:
+                    break
+                buf = buf[2+pkt_len:]
+                # 登录验证
+                if packid == 201:
+                    req = login_pb.LoginReq()
+                    req.ParseFromString(body)
+                    if not await verify(req.token, req.player_id):
+                        await websocket.close()
+                        return
+                    player_id = req.player_id
+                    # 扩展字段：查看他人地图时携带目标玩家ID
+                    target_player_id = getattr(req, "target_player_id", None)
+                    
+                    print_with_time(f"玩家{player_id}进入map_server")
+                    # 区分：查看自己地图/查看他人地图
+                    if target_player_id:
+                        # 查看他人地图：推送20580初始化数据
+                        await send_other_map_init_data(websocket, target_player_id, MAP_POOL)
+                    else:
+                        # 查看自己地图：原有初始化逻辑
+                        await init_new_player_map(player_id, MAP_POOL)
+                        await init_new_player_region(player_id, MAP_POOL)
+                        await send_map_init_data(websocket, player_id, MAP_POOL)
+                # 心跳处理
+                elif packid == 203:
+                    rsp = login_pb.HeartRes()
+                    rsp.time = int(time.time())
+                    await websocket.send(make_packet(203, rsp.SerializeToString()))
+                # 地图返回大厅 20601
+                elif packid == 20601:
+                    req = back_hall_pb.MapBackHallReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_map_back_hall(req.player_id, req.item_list, MAP_POOL))
+                # 获取道具列表 10201
+                elif packid == 10201:
+                    req = item_pb.ReqLatestItem()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_req_latest_item(req.player_id, MAP_POOL))
+                # 选择自己区域 20201
+                elif packid == 20201:
+                    req = region_pb.SelectRegionReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_select_region(req.player_id, req.region_id, MAP_POOL))
+                # 修筑建筑 20203
+                elif packid == 20203:
+                    req = region_pb.ChangeBuildReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_change_build(req.player_id, req.region_id, req.is_building, req.build_id, MAP_POOL, websocket))
+                # 回收产出 20301
+                elif packid == 20301:
+                    req = build_pb.GetBuildProReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_get_build_product(req.player_id, req.region_id, req.build_id, MAP_POOL))
+                # 进入区域副本战斗 20401（原有逻辑保留，扩展支持他人地图）
+                elif packid == 20401:
+                    req = match_pb.ToEnterFightRoomReq()
+                    req.ParseFromString(body)
+                    # 扩展：携带target_player_id则进入他人地图对决房间
+                    target_pid = getattr(req, "target_player_id", 0)
+                    await websocket.send(await handle_enter_fight_room(req.player_id, req.region_id, MAP_POOL, target_pid))
+                # 离开他人地图回到大厅房间 20603
+                elif packid == 20603:
+                    req = back_hall_pb.OthMapBackExtralHallReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_oth_map_back_extral_hall(req.player_id, req.map_id))
+                # 选择他人地图区域 20501
+                elif packid == 20501:
+                    req = other_map_pb.SelectOthRegionReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_select_oth_region(req.player_id, req.region_id, MAP_POOL))
+    except Exception as e:
+        print_with_time(f"map异常：{e}")
+
+# ===================== 【新增】内部RPC WS连接处理逻辑（仅处理建筑修改请求） =====================
+async def handle_inner_map(websocket):
+    buf = b""
+    try:
+        async for msg in websocket:
+            buf += msg
+            while True:
+                packid, body, pkt_len = parse_packet(buf)
+                if not packid:
+                    break
+                buf = buf[2+pkt_len:]
+                # 内部接口：战斗胜利后修改建筑为废墟（协议号20299，内部专用）
+                if packid == 20299:
+                    # 解析请求：target_player_id + region_id
+                    req = region_pb.ChangeBuildReq()
+                    req.ParseFromString(body)
+                    success, msg = await handle_inner_build_to_ruin(req.player_id, req.region_id, MAP_POOL)
+                    # 返回结果
+                    res = region_pb.ChangeBuildRes()
+                    await websocket.send(b"OK" if success else b"NO")
+                # 内部心跳
+                elif packid == 203:
+                    rsp = login_pb.HeartRes()
+                    rsp.time = int(time.time())
+                    await websocket.send(make_packet(203, rsp.SerializeToString()))
+    except Exception as e:
+        print_with_time(f"map内部RPC异常：{e}")
+
+# ===================== 服务主入口（新增内部服务启动） =====================
+async def main():
+    global MAP_POOL
+    MAP_POOL = await aiomysql.create_pool(**MYSQL_CONFIG)
+    await init_redis_pool()
+    
+    # 启动对外WS服务（修改后）
+    outer_server = await websockets.serve(handle_map, SERVER_HOST, SERVER_PORT)
+    print_with_time(f"✅ map_server对外服务启动成功 {SERVER_HOST}:{SERVER_PORT}")
+    
+    # 启动内部RPC WS服务（修改后）
+    inner_server = await websockets.serve(handle_inner_map, INNER_HOST, INNER_PORT)
+    print_with_time(f"✅ map_server内部RPC服务启动成功 {INNER_HOST}:{INNER_PORT}")
+    
+    # 保持服务一直运行（这行不变）
+    await asyncio.Future()
+
+if __name__ == "__main__":
+    if sys.platform == "win32":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
+
+
+
+fight_server/main.py
+
+import sys, os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, BASE_DIR)
+import asyncio
+import websockets
+import aiomysql
+import time
+import json
+import configparser
+from common.utils.logger import print_with_time
+from common.utils.packet import parse_packet, make_packet
+from common.utils.redis_helper import init_redis_pool
+from handlers.fight_handlers import *
+from importlib import import_module
+
+# 读取配置
+config = configparser.ConfigParser()
+config.read(os.path.join(BASE_DIR, "config/global.ini"), encoding="utf-8")
+db_config = configparser.ConfigParser()
+db_config.read(os.path.join(BASE_DIR, "config/db.ini"), encoding="utf-8")
+
+# MySQL配置（连接map数据库，读取卡牌/角色模板）
+MYSQL_CONFIG = {
+    "host": db_config.get("mysql","host"),
+    "port": int(db_config.get("mysql","port")),
+    "user": db_config.get("mysql","user"),
+    "password": db_config.get("mysql","password"),
+    "db": db_config.get("mysql","db_map"),
+    "charset": db_config.get("mysql","charset"),
+    "autocommit": True
+}
+
+# 全局变量
+FIGHT_POOL = None
+LOGIN_HOST = config.get("login","ws_host")
+LOGIN_PORT = int(config.get("login","ws_port"))
+SERVER_HOST = config.get("fight","ws_host")
+SERVER_PORT = int(config.get("fight","ws_port"))
+ROBOT_SERVER_HOST = config.get("robot","ws_host")
+ROBOT_SERVER_PORT = int(config.get("robot","ws_port"))
+
+# 全局连接管理
+PLAYER_WS_MAP = {}  # {room_id: websocket}
+ROBOT_WS = None
+
+# 动态导入proto
+import_module("common.protos.common.common_pb2")
+login_pb = import_module("common.protos.common.2_login_pb2")
+room_pb = import_module("common.protos.fightserver.501_fightserver_room_pb2")
+record_pb = import_module("common.protos.fightserver.502_fightserver_record_pb2")
+
+# ===================== token验证（和其他服务完全一致） =====================
+async def verify(token, player_id):
+    try:
+        async with websockets.connect(f"ws://{LOGIN_HOST}:{LOGIN_PORT}") as ws:
+            req = login_pb.LoginReq()
+            req.token = token
+            req.player_id = player_id
+            await ws.send(make_packet(201, req.SerializeToString()))
+            return await ws.recv() == b"OK"
+    except:
+        return False
+
+# ===================== 机器人连接管理 =====================
+async def connect_robot_server():
+    """连接机器人服务，保持长连接"""
+    global ROBOT_WS
+    while True:
+        try:
+            if ROBOT_WS is None or ROBOT_WS.closed:
+                ROBOT_WS = await websockets.connect(f"ws://{ROBOT_SERVER_HOST}:{ROBOT_SERVER_PORT}")
+                print_with_time("✅ 机器人服务连接成功")
+            await asyncio.sleep(5)
+        except Exception as e:
+            print_with_time(f"❌ 机器人服务连接失败，5秒后重试：{str(e)}")
+            ROBOT_WS = None
+            await asyncio.sleep(5)
+
+# ===================== 连接处理逻辑（原有逻辑完全保留） =====================
+async def handle_fight(websocket):
+    buf = b""
+    player_id = None
+    room_id = None
+    round_scheduler_task = None
+    try:
+        async for msg in websocket:
+            buf += msg
+            while True:
+                packid, body, pkt_len = parse_packet(buf)
+                if not packid:
+                    break
+                buf = buf[2+pkt_len:]
+                # 登录验证（必须携带player_id+token+room_id）
+                if packid == 201:
+                    req = login_pb.LoginReq()
+                    req.ParseFromString(body)
+                    # 强制校验room_id
+                    if not hasattr(req, "room_id") or req.room_id <= 0:
+                        print_with_time(f"❌ 玩家登录fight_server失败，未携带有效room_id")
+                        await websocket.close()
+                        return
+                    room_id = req.room_id
+                    # token验证
+                    if not await verify(req.token, req.player_id):
+                        await websocket.close()
+                        return
+                    player_id = req.player_id
+                    print_with_time(f"玩家{player_id}进入fight_server，房间ID{room_id}")
+                    
+                    # 推送房间初始化数据
+                    room_id, robot_id, target_player_id, region_id = await send_fight_room_init(websocket, player_id, room_id, FIGHT_POOL)
+                    if not room_id:
+                        await websocket.close()
+                        return
+                    
+                    # 保存玩家连接
+                    PLAYER_WS_MAP[room_id] = websocket
+                    
+                    # 启动回合调度器
+                    if ROBOT_WS and not ROBOT_WS.closed:
+                        round_scheduler_task = asyncio.create_task(
+                            fight_round_scheduler(room_id, websocket, ROBOT_WS, CARD_TEMPLATE_MAP)
+                        )
+                
+                # 心跳处理
+                elif packid == 203:
+                    rsp = login_pb.HeartRes()
+                    rsp.time = int(time.time())
+                    await websocket.send(make_packet(203, rsp.SerializeToString()))
+                
+                # 退出房间手动结束战斗 50201
+                elif packid == 50201:
+                    req = record_pb.EndFightRoomBackMapReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_end_fight_room(req.player_id, req.room_id, req.reason, FIGHT_POOL))
+                    # 停止回合调度
+                    if round_scheduler_task:
+                        round_scheduler_task.cancel()
+                    # 清理连接
+                    if req.room_id in PLAYER_WS_MAP:
+                        del PLAYER_WS_MAP[req.room_id]
+                
+                # 出牌操作 50101
+                elif packid == 50101:
+                    req = room_pb.UpPlayCardReq()
+                    req.ParseFromString(body)
+                    rsp_packet, msg = await handle_up_play_card(req.player_id, req.room_id, req.char_id, req.Card.id, FIGHT_POOL)
+                    await websocket.send(rsp_packet)
+                
+                # 查看剩牌数量 50103
+                elif packid == 50103:
+                    req = room_pb.GetRemainCardCountReq()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_get_remain_card_count(req.player_id, req.room_id))
+                
+                # 查看手牌信息 50105
+                elif packid == 50105:
+                    req = room_pb.ReqLatestGamHandCard()
+                    req.ParseFromString(body)
+                    await websocket.send(await handle_req_latest_gam_hand_card(req.player_id, req.room_id))
+    
+    except Exception as e:
+        print_with_time(f"fight异常：{e}")
+    finally:
+        # 清理资源
+        if round_scheduler_task:
+            round_scheduler_task.cancel()
+        if room_id and room_id in PLAYER_WS_MAP:
+            del PLAYER_WS_MAP[room_id]
+        if player_id and room_id:
+            await end_fight_room_redis(room_id)
+
+# ===================== 服务主入口 =====================
+async def main():
+    global FIGHT_POOL
+    # 初始化MySQL连接池
+    FIGHT_POOL = await aiomysql.create_pool(**MYSQL_CONFIG)
+    # 初始化Redis连接池
+    await init_redis_pool()
+    # 加载卡牌模板
+    await load_card_template(FIGHT_POOL)
+    # 启动机器人连接任务
+    asyncio.create_task(connect_robot_server())
+    # 启动WebSocket服务
+    async with websockets.serve(handle_fight, SERVER_HOST, SERVER_PORT):
+        print_with_time(f"✅ fight_server启动成功 {SERVER_HOST}:{SERVER_PORT}")
+        await asyncio.Future()
+
+if __name__ == "__main__":
+    if sys.platform == "win32":
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
+

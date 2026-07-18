@@ -1,0 +1,27 @@
+import "common/common.proto";
+
+package robotserver_fight;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	robotserver_fight = 601;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_UpPlayCardReq = 1;
+	CMD_UpPlayCardRes = 2;
+}
+
+message UpPlayCardReq{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int64 char_id =3;
+	optional common.Card Card = 4;
+}
+
+message UpPlayCardRes{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int64 char_id = 3;
+	optional int64 char_Hp = 4;
+}

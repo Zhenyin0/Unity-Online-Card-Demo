@@ -1,0 +1,31 @@
+package battleserver_record;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	battleserver_record = 702;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_EndBattleRoomBackMapReq = 1;
+	CMD_EndBattleRoomBackMapRes = 2;
+
+	CMD_EndBattleGamBackMapNotic = 80;
+}
+
+//战斗房间请求退出
+message EndBattleRoomBackMapReq{
+	optional int64 player_id = 1;           //玩家ID
+	optional int64 room_id = 2;
+	optional string reason = 3;
+}
+
+//回应房间退出请求
+message EndBattleRoomBackMapRes{
+	optional int64 room_id = 1;
+	optional int64 room_type = 2;
+	optional int64 start_time = 3;
+	optional int64 end_time = 4;
+	optional int32 total_round = 5;
+	optional int32 is_win = 6;
+	optional string end_reason = 7;
+}

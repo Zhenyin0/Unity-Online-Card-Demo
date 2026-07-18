@@ -1,0 +1,39 @@
+package common;
+
+message Item {
+    optional int64 id = 1;
+    optional int64 count = 2;
+}
+
+message Bag {
+    optional int64 id = 1;
+    optional int64 count = 2;
+}
+
+message Card {
+    optional int64 id = 1;
+    optional int64 count = 2;
+}
+
+message CardSign{
+    optional int64 id = 1;
+    optional string card_name = 2;
+    optional string card_effect = 3;
+    optional int32 card_mana = 4;
+    optional int32 card_stamina = 5;
+    optional int32 is_noble = 6;
+    optional int32 is_all_round = 7;
+}
+
+message CharSign{
+    optional int64 id = 1;
+    optional string char_name = 2;
+    optional int32 char_Hp = 3;
+    optional int32 char_atk = 4;
+    repeated Card Card_list = 5;
+}
+
+message CharForCard{
+    optional int64 char_id = 1;
+    repeated Card Card_list = 2;
+}

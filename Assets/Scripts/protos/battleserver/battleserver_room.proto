@@ -1,0 +1,118 @@
+import "common/common.proto";
+
+package battleserver_room;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	battleserver_room = 701;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_UpPlayCardReq = 1;
+	CMD_UpPlayCardRes = 2;
+	CMD_GetRemainCardCountReq = 3;
+	CMD_GetRemainCardCountRes = 4;
+	CMD_ReqLatestGamHandCard = 5;
+	CMD_ResLatestGamHandCard = 6;
+
+	CMD_PlayerBattleRoomNotice = 80;
+	CMD_PlayerBattleCardNotice = 81;
+	CMD_GamRoundStatusOneNotic = 82;
+	CMD_GamRoundStatusTwoNotic = 83;
+	CMD_GamRoundStatusThreeNotic = 84;
+	CMD_NowGamHandCardNotic = 85;
+	CMD_GamRoundStatusFourNotic = 86;
+}
+
+message UpPlayCardReq{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int64 char_id =3;
+	optional common.Card Card = 4;
+}
+
+message UpPlayCardRes{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int64 char_id = 3;
+	optional int64 char_Hp = 4;
+}
+
+message GetRemainCardCountReq{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+
+}
+
+message GetRemainCardCountRes{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int32 card_count = 3;
+}
+
+message ReqLatestGamHandCard{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+}
+
+message ResLatestGamHandCard{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	repeated common.CardSign CardSign_list = 3;
+}
+
+message PlayerBattleRoomNotice{
+	optional int64 player_id = 1;
+	optional int64 room_id = 2;
+	optional int64 map_id = 3;
+	optional int64 room_type = 4;
+	optional string room_type_name = 5;
+	optional string status = 6;
+	optional int64 bag_item_id = 7;
+	optional int64 bag_item_count = 8;
+	optional int64 mana = 9;
+	optional int64 stamina = 10;
+}
+
+message PlayerBattleCardNotice{
+	optional int64 room_id = 1;
+	repeated common.CharSign charSign_list = 2;
+    repeated common.CharForCard charforcard_list = 3;
+}
+
+message GamRoundStatusOneNotic{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int32 round_count = 3;
+	optional string round_status = 4;
+	optional int32 keep_time = 5;
+}
+
+message GamRoundStatusTwoNotic{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int32 round_count = 3;
+	optional string round_status = 4;
+	optional int32 keep_time = 5;
+}
+
+message GamRoundStatusThreeNotic{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int32 round_count = 3;
+	optional string round_status = 4;
+	optional int32 keep_time = 5;
+}
+
+message NowGamHandCardNotic{
+	optional int64 char_id = 1;
+	repeated common.CardSign CardSign_list = 2;
+}
+
+message GamRoundStatusFourNotic{
+	optional int64 room_id = 1;
+	optional int64 player_id = 2;
+	optional int32 round_count = 3;
+	optional string round_status = 4;
+	optional int32 keep_time = 5;
+}

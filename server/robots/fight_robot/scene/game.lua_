@@ -1,0 +1,225 @@
+-- game.lua
+-- 机器人战斗场景逻辑
+
+local log = require "skynet-fly.log"
+local pb_netpack = require "skynet-fly.netpack.pb_netpack"
+local timer = require "skynet-fly.timer"
+local time_util = require "skynet-fly.utils.time_util"
+local pack_helper = require "common.pack_helper"
+local skynet = require "skynet"
+
+local game_pack = pb_netpack.instance("game")
+local game_helper = pack_helper.instance("game", game_pack)
+
+do
+    game_pack.load('../../commonlualib/protos/common')
+    game_pack.load('../../commonlualib/protos/fightserver')
+    game_helper.set_pack_id_names()
+end
+
+local PACK = game_helper.PACK
+
+local setmetatable = setmetatable
+local math = math
+local random = math.random
+
+local M = {}
+local mt = { __index = M }
+
+function M:init()
+    -- 初始化（可扩展）
+end
+
+function M:new()
+    local t = {
+        m_player_id = nil,
+        m_table_id = nil,
+        m_game_rpc = nil,
+        m_heart_timer = nil,
+        m_doing_timer = nil,
+        m_game_data = nil,
+        m_is_ready = false,
+    }
+    setmetatable(t, mt)
+    return t
+end
+
+function M:clear()
+    self.m_table_id = nil
+    self.m_game_rpc = nil
+    self.m_game_data = nil
+    self.m_is_ready = false
+
+    if self.m_doing_timer then
+        self.m_doing_timer:cancel()
+        self.m_doing_timer = nil
+    end
+    if self.m_heart_timer then
+        self.m_heart_timer:cancel()
+        self.m_heart_timer = nil
+    end
+end
+
+function M:on_connect(player_id, table_id, token, game_rpc)
+    self:clear()
+    self.m_player_id = player_id
+    self.m_table_id = table_id
+    self.m_game_rpc = game_rpc
+
+    -- 登录游戏服
+    local login_req = {
+        token = token,
+        player_id = player_id,
+        room_id = table_id,
+    }
+
+    local packid, packbody = game_rpc:req(PACK.login.LoginReq, login_req)
+    if not packid or packid == PACK.errors.Error then
+        log.warn("机器人登录游戏服失败 >>>", self.m_player_id, packid, packbody)
+        return false
+    end
+
+    -- 启动心跳
+    if self.m_heart_timer then
+        self.m_heart_timer:cancel()
+    end
+
+    local heart_req = { time = nil }
+    self.m_heart_timer = timer:new(timer.second * 5, 0, function()
+        heart_req.time = time_util.time()
+        local pre_time = skynet.now()
+        local packid = game_rpc:req(PACK.login.HeartReq, heart_req)
+        if not packid or packid == PACK.errors.Error then
+            return
+        else
+            local now_time = skynet.now()
+            local use_time = now_time - pre_time
+            if use_time > 100 then
+                log.warn_fmt("战斗心跳延迟过大 >>> %s %s", self.m_player_id, use_time)
+            end
+        end
+    end)
+
+    -- 请求进入桌子
+    local packid, packbody = game_rpc:req(PACK.game_hall.JoinReq, {
+        table_id = self.m_table_id
+    })
+    if not packid or packid == PACK.errors.Error then
+        log.warn("机器人进入桌子失败 >>>", self.m_player_id, packid, packbody)
+        return false
+    end
+
+    -- 请求游戏状态
+    self:req_game_state()
+    self.m_is_ready = true
+    return true
+end
+
+function M:on_handle(pack_id, packbody)
+    local HANDLE_FUNC = {}
+
+    -- 通知操作
+    HANDLE_FUNC[PACK.fightserver_room.NextDoing] = function(body)
+        if not self.m_game_data then
+            return
+        end
+        self.m_game_data.next_doing = body
+        self:check_doing()
+    end
+
+    -- 游戏状态更新
+    HANDLE_FUNC[PACK.fightserver_room.GameStateRes] = function(body)
+        self.m_game_data = body
+        self:check_doing()
+    end
+
+    -- 移动结果
+    HANDLE_FUNC[PACK.fightserver_room.MoveRes] = function(body)
+        -- 记录即可，不需要额外处理
+    end
+
+    -- 游戏结束
+    HANDLE_FUNC[PACK.fightserver_room.GameOverNotice] = function(body)
+        self.m_game_data = nil
+        self.m_is_ready = false
+        self:clear()
+    end
+
+    local handle = HANDLE_FUNC[pack_id]
+    if not handle then
+        -- 忽略未处理的消息
+        return
+    end
+    handle(packbody)
+end
+
+function M:req_game_state()
+    if not self.m_game_rpc then
+        return
+    end
+
+    local packid, packbody = self.m_game_rpc:req(PACK.fightserver_room.GameStateReq, {
+        player_id = self.m_player_id
+    })
+
+    if not packid or packid == PACK.errors.Error then
+        return
+    end
+
+    self.m_game_data = packbody
+    self:check_doing()
+end
+
+function M:doing()
+    if not self.m_game_data then
+        return
+    end
+
+    local next_doing = self.m_game_data.next_doing
+    if not next_doing or next_doing.player_id ~= self.m_player_id then
+        return
+    end
+
+    -- 随机选一张卡牌打出
+    local can_move_list = next_doing.can_move_list
+    if not can_move_list or #can_move_list == 0 then
+        return
+    end
+
+    local index = random(1, #can_move_list)
+    local one_move = can_move_list[index]
+    local card_id = one_move.card_id or 0
+
+    if card_id <= 0 then
+        return
+    end
+
+    self.m_game_rpc:push(PACK.fightserver_room.MoveReq, {
+        card_id = card_id,
+    })
+end
+
+function M:check_doing()
+    if not self.m_game_data then
+        return
+    end
+
+    local next_doing = self.m_game_data.next_doing
+    if not next_doing or next_doing.player_id ~= self.m_player_id then
+        return
+    end
+
+    -- 延迟随机时间出牌（模拟人类操作）
+    local remain_once_time = next_doing.remain_once_time or 60
+    local left = timer.second
+    local right = math.min(timer.second * 10, remain_once_time)
+
+    if self.m_doing_timer then
+        self.m_doing_timer:cancel()
+    end
+
+    local delay = random(left, right)
+    self.m_doing_timer = timer:new(delay, 1, self.doing, self)
+end
+
+return M

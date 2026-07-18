@@ -1,0 +1,37 @@
+import "common/common.proto";
+
+package mapserver_hall;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	mapserver_hall = 206;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+	CMD_MapBackHallReq = 1;
+	CMD_MapBackHallRes = 2;
+	CMD_OthMapBackExtralHallReq = 3;
+	CMD_OthMapBackExtralHallRes = 4;
+
+}
+
+//退出地图场景登录大厅
+message MapBackHallReq{
+	optional int64 player_id = 1;           //玩家ID
+	repeated common.Item item_list = 2;
+}
+
+//退出地图场景登录大厅
+message MapBackHallRes{
+	optional int64 player_id = 1;           //玩家ID
+}
+
+message OthMapBackExtralHallReq{
+	optional int64 player_id = 1;
+	optional int64 map_id = 2;
+}
+
+message OthMapBackExtralHallRes{
+	repeated int64 player_id = 1;
+	repeated int64 player_name = 2;
+}

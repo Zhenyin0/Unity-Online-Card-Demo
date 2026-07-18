@@ -1,0 +1,74 @@
+package hallserver_match;
+
+//协议主码 本服独有协议 占用 101-654 公共占用1-50 游戏公共占用50-100
+enum main {
+	hallserver_match = 103;
+}
+//协议子码 req res 占用1-80  通知占用80-100
+enum sub {
+    CMD_MatchGameReq = 1;
+    CMD_MatchGameRes = 2;
+    CMD_CancelMatchGameReq = 3;
+    CMD_CancelMatchGameRes = 4;
+    CMD_AcceptMatchReq = 5;
+    CMD_AcceptMatchRes = 6;
+    CMD_AcceptMatchNoticRes = 7;
+    CMD_RefuseMatchNoticRes = 8;
+    CMD_MatchGameNotice = 80;
+    CMD_JoinGameNotice = 81;
+}
+
+//请求匹配游戏
+message MatchGameReq {
+    optional int32 player_id = 1;
+    optional int32 room_type = 2;   //玩法类型
+}
+
+//回应匹配游戏
+message MatchGameRes {
+    optional int32 room_id = 1;
+}
+
+//取消匹配游戏
+message CancelMatchGameReq {
+    optional int32 player_id = 1;
+}
+//回应取消匹配游戏
+message CancelMatchGameRes {
+    optional int32 player_id = 1;
+}
+
+//通知匹配成功
+message MatchGameNotice {
+    optional int32   player_id     = 1;  //游戏ID
+    optional string  session_id  = 2;  //匹配成功的会话ID
+    optional int32   remain_time = 3;  //接受倒计时
+}
+
+//请求接受匹配
+message AcceptMatchReq {
+    optional int32  player_id      = 1;  //游戏ID
+    optional string session_id   = 2;  //匹配成功的会话ID
+}
+
+//回应接受匹配
+message AcceptMatchRes {
+    optional int32  player_id      = 1;  //游戏ID
+    optional string session_id   = 2;  //匹配成功的会话ID
+}
+
+message AcceptMatchNoticRes{
+    optional int32  player_id      = 1;  //游戏ID
+    optional string session_id   = 2;  //匹配成功的会话ID
+} 
+
+message RefuseMatchNoticRes{
+    optional int32 player_id = 1;
+}
+
+//通知进入游戏
+message JoinGameNotice {
+    optional string  gamehost    = 1;  //游戏服的连接信息
+    optional string  gametoken   = 2;  //游戏服的登录token
+    optional string  room_id    = 3;  //桌子ID
+}
