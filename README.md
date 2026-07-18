@@ -1,5 +1,5 @@
 # 联机经营卡牌Demo
-客户端技术：Unity2022.3 C# UniTask WebSocket Protobuf DoTween
+客户端技术：Unity2022.3 C# UniTask native-WebSocket Newtonsoft.Json Protobuf DoTween
 
 服务端技术: skynet_fly  mysql redis 
 
