@@ -22,6 +22,7 @@
 
 后端架构展示:
 <img width="4868" height="2189" alt="架构设计图1" src="https://github.com/user-attachments/assets/c143498f-8991-4d0a-8136-4b7e53680087" />
+<img width="2016" height="1267" alt="7UFGRSST``P$XG%RDUSJ4~H" src="https://github.com/user-attachments/assets/a3936baf-3abd-4fd2-a18b-148ecc15b093" />
 
 
 
