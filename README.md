@@ -6,16 +6,9 @@
 使用方法：Unity2022.3打开工程，自行填写服务端地址即可运行。
 当前完成度: 仅实现功能，登录，注册，大厅场景的初始化，地图战斗的全部功能。
 
-场景进入顺序: Load--->home───>map--->fight--->JieSuan
-                    │        ^                  │
-                    │        └----------------──┘
-                    │
-                    └─────> LianjiMingDan--->otherMap--->fight--->JieSuan
-                                 │             ^                    │    
-                                 │             └--------------------┘
-                                 │              ┌─---------------------─┐
-                                 │              ∨                       │
-                                 └─-------─>selectmodule--->battle--->JieSuan
+场景进入顺序: 
+<img width="1005" height="384" alt="37AG6Q9V93(~T1Z`@$1@T0X" src="https://github.com/user-attachments/assets/71a78254-1ec2-4a70-b24b-140d29a9b131" />
+
 
 前端效果展示:
 <img width="1920" height="1080" alt="MapSence1-fake" src="https://github.com/user-attachments/assets/d32e748c-9476-4d05-a7c3-151d07f4a7a9" />
